@@ -47,7 +47,7 @@ public class PersonaController  {
  // produces = "application/json",
  // headers = {"Access-Control-Allow-Origin = http://localhost:4200","Access-Control-Allow-Headers= Origin, Content-Type, Authorization"},
  // method = {RequestMethod.GET, RequestMethod.PUT})
-  @CrossOrigin(allowedHeaders = "*",origins ="http://localhost:4200",methods={RequestMethod.GET,RequestMethod.HEAD,RequestMethod.OPTIONS,RequestMethod.PUT})
+  //@CrossOrigin(allowedHeaders = "*",origins ="http://localhost:4200",methods={RequestMethod.GET,RequestMethod.HEAD,RequestMethod.OPTIONS,RequestMethod.PUT})
     
     @GetMapping("/personas/traer")
      //@RequestMapping(method = {RequestMethod.GET,RequestMethod.OPTIONS},path = "/traer")
