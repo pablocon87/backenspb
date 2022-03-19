@@ -121,7 +121,8 @@ public class SesionApplication {
                                 .antMatchers(HttpMethod.POST,"/personas/crear").permitAll().and().authorizeRequests()
                                 .antMatchers(HttpMethod.DELETE,"/personas/borrar/{id}").permitAll().and().authorizeRequests()
                                 .antMatchers(HttpMethod.PUT,"/personas/editar/{id}").permitAll()*/
-                                .anyRequest().authenticated();
+                                .and().authorizeRequests()
+				.antMatchers(HttpMethod.OPTIONS,"hello").permitAll().anyRequest().authenticated();
                                                                                            
                                 
                             

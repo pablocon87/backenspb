@@ -4,6 +4,7 @@
  */
 package com.example.sesion.sesion.controller;
 import com.example.sesion.sesion.controller.dto.User;
+import com.example.sesion.sesion.repository.IUserService;
 import java.util.*;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,22 +14,29 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.stream.Collectors;
+import org.springframework.beans.factory.annotation.Autowired;
 //import javax.swing.JOptionPane;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 public class UserController {
-         @CrossOrigin(origins ="http://localhost:4200")
+        // @CrossOrigin(origins ="http://localhost:4200")
+           @Autowired
+    private IUserService interUser;
 	@PostMapping("user")
         public User login(@RequestParam("user") String username, @RequestParam("password") String pwd) {
 	           System.out.println("este es user "+ username + " y este es pass " + pwd);
 		String token = getJWTToken(username);
                 Integer expired=getExpired();
 		User user = new User();
-                if ((user.getUser() == null ? username == null : user.getUser().equals(username)) && (user.getPassword() == null ? pwd == null : user.getPassword().equals(pwd))){
+                if ((user.getUser() == null ? username == null : user.getUser().equals(username)) && (user.getPassword() == null ? pwd == null : user.getPassword().equals(getMD5(pwd)))){
 		                  System.out.println("Adentro " + token+" "+expired);
                
 		user.setToken(token);
@@ -67,5 +75,25 @@ public class UserController {
 
 		return "Bearer " + token;
 	}
-    
+         @PostMapping("/user/crear")
+    public String createUser(@RequestBody User usr){
+        interUser.saveUser(usr);
+        return "Succes";
+    }
+    public static String getMD5(String input) {
+ try {
+ MessageDigest md = MessageDigest.getInstance("MD5");
+ byte[] messageDigest = md.digest(input.getBytes());
+ BigInteger number = new BigInteger(1, messageDigest);
+ String hashtext = number.toString(16);
+
+ while (hashtext.length() < 32) {
+ hashtext = "0" + hashtext;
+ }
+ return hashtext;
+ }
+ catch (NoSuchAlgorithmException e) {
+ throw new RuntimeException(e);
+ }
+ }
 }
