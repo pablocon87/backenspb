@@ -26,4 +26,7 @@ public class Persona {
     private String sobre_mi;
     private String url_foto;
     private String acerca_de;
+    private String facebook;
+    private String twiter;
+    private String instagram;
 }
