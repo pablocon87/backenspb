@@ -47,7 +47,7 @@ public class SesionApplication {
   configuration.addExposedHeader("Location");
   configuration.addExposedHeader("Content-Location");*/
         configuration.setAllowCredentials(true);
-        configuration.setAllowedOrigins(Arrays.asList("https://argpro.herokuapp.com/"));
+        configuration.setAllowedOrigins(Arrays.asList("https://argpro.herokuapp.com"));
         configuration.setAllowedHeaders(Arrays.asList("Origin","Content-Type", "Authorization"));
         configuration.setAllowedMethods(Arrays.asList("GET","POST","OPTIONS","PUT","DELETE"));
         configuration.setMaxAge(36000L);

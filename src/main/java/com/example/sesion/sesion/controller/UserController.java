@@ -35,11 +35,28 @@ public class UserController {
 	           System.out.println("este es user "+ username + " y este es pass " + pwd);
                    
 		String token = getJWTToken(username);
+                String guardar="";
                 Integer expired=getExpired();
 		User user = new User();
-                System.out.println("este es passwor"+user.getPassword()+ "el encriptado es "+getMD5(pwd));
-                if ((user.getUser() == null ? username == null : user.getUser().equals(username)) && (user.getPassword() == null ? pwd == null : user.getPassword().equals(getMD5(pwd)))){
-		                  System.out.println("Adentro " + token+" "+expired);
+               
+        List<User> lista = interUser.getUser();
+     for(User objPersona : lista){
+      if(objPersona.getUser().equals(username) && objPersona.getPassword().equals(getMD5(pwd))){
+           objPersona.setToken(token);
+          objPersona.setExpired(expired);
+          guardar="ok";
+          return objPersona;
+      }else{
+          return objPersona;
+      }
+      
+    }
+        
+      return user;
+               // System.out.println("este es passwor"+user.getPassword()+ "el encriptado es "+getMD5(pwd));
+                /*if ((user.getUser() == null ? username == null : user.getUser().equals(username)) && (user.getPassword() == null ? pwd == null : user.getPassword().equals(getMD5(pwd)))){
+		 
+               System.out.println("Adentro " + token+" "+expired);
                
 		user.setToken(token);
                 user.setExpired(expired);
@@ -48,7 +65,7 @@ public class UserController {
                     user.setUser(username);
                     user.setPassword(pwd);
                     return user;
-                }
+                }*/
                 
 		
 		
@@ -82,6 +99,12 @@ public class UserController {
         interUser.saveUser(usr);
         return "Succes";
     }
+    	 public List<User> getUser(){
+             
+        return interUser.getUser();
+    }
+		
+	
     public static String getMD5(String input) {
  try {
  MessageDigest md = MessageDigest.getInstance("MD5");
