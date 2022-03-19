@@ -33,10 +33,12 @@ public class UserController {
 	@PostMapping("user")
         public User login(@RequestParam("user") String username, @RequestParam("password") String pwd) {
 	           System.out.println("este es user "+ username + " y este es pass " + pwd);
+                   
 		String token = getJWTToken(username);
                 Integer expired=getExpired();
 		User user = new User();
-                if ((user.getUser() == null ? username == null : user.getUser().equals(username)) && (user.getPassword() == null ? pwd == null : getMD5(user.getPassword()).equals(getMD5(pwd)))){
+                System.out.println("este es passwor"+user.getPassword()+ "el encriptado es "+getMD5(pwd));
+                if ((user.getUser() == null ? username == null : user.getUser().equals(username)) && (user.getPassword() == null ? pwd == null : user.getPassword().equals(getMD5(pwd)))){
 		                  System.out.println("Adentro " + token+" "+expired);
                
 		user.setToken(token);
