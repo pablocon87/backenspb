@@ -4,10 +4,17 @@
  */
 package com.example.sesion.sesion.repository;
 
+import com.example.sesion.sesion.controller.dto.User;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 /**
  *
  * @author pablo
  */
-public interface UserRepository {
+@Repository
+@Configuration
+public interface UserRepository extends JpaRepository<User,Long> {
     
 }
