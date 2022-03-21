@@ -82,7 +82,8 @@ public class PersonaController  {
             @RequestParam ("acerca_de") String nuevoAcercade,
             @RequestParam ("facebook") String nuevoFacebook,
             @RequestParam("twiter") String nuevoTwiter,
-            @RequestParam("instagram") String nuevoInstagram
+            @RequestParam("instagram") String nuevoInstagram,
+            @RequestParam("infcont") String nuevoInfcont
             ){
         System.out.println("AVER ID  "+ id);
                     
@@ -99,6 +100,7 @@ public class PersonaController  {
                perso.setFacebook(nuevoFacebook);
                perso.setTwiter(nuevoTwiter);
                perso.setInstagram(nuevoInstagram);
+               perso.setInfcont(nuevoInfcont);
             interPersona.savePersona(perso);
             
             return perso;

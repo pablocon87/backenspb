@@ -29,4 +29,5 @@ public class Persona {
     private String facebook;
     private String twiter;
     private String instagram;
+    private String infcont;
 }

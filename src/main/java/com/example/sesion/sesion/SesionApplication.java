@@ -47,7 +47,7 @@ public class SesionApplication {
   configuration.addExposedHeader("Location");
   configuration.addExposedHeader("Content-Location");https://argpro.herokuapp.com*/
         configuration.setAllowCredentials(true);
-        configuration.setAllowedOrigins(Arrays.asList("https://argpro.herokuapp.com"));
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
         configuration.setAllowedHeaders(Arrays.asList("Origin","Content-Type", "Authorization"));
         configuration.setAllowedMethods(Arrays.asList("GET","POST","OPTIONS","PUT","DELETE"));
         configuration.setMaxAge(36000L);
@@ -122,7 +122,7 @@ public class SesionApplication {
                                 .antMatchers(HttpMethod.DELETE,"/personas/borrar/{id}").permitAll().and().authorizeRequests()
                                 .antMatchers(HttpMethod.PUT,"/personas/editar/{id}").permitAll()*/
                                 .and().authorizeRequests()
-				.antMatchers(HttpMethod.GET,"/personas/traer").permitAll().anyRequest().authenticated();
+				.antMatchers(HttpMethod.POST,"/user/crear").permitAll().anyRequest().authenticated();
                                                                                            
                                 
                             

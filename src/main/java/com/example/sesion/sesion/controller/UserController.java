@@ -41,12 +41,12 @@ public class UserController {
                
         List<User> lista = interUser.getUser();
      for(User objPersona : lista){
+         System.out.println("ESTE ES PASS "+objPersona.getPassword()+" "+"este es MD5"+getMD5(pwd));
       if(objPersona.getUser().equals(username) && objPersona.getPassword().equals(getMD5(pwd))){
+          System.out.println("ESTE ES PASS adentro "+objPersona.getPassword()+" "+"este es MD5"+getMD5(pwd));
            objPersona.setToken(token);
           objPersona.setExpired(expired);
           guardar="ok";
-          return objPersona;
-      }else{
           return objPersona;
       }
       
@@ -96,7 +96,18 @@ public class UserController {
 	}
          @PostMapping("/user/crear")
     public String createUser(@RequestBody User usr){
+        usr.setId(usr.getId());
+        usr.setUser(usr.getUser());
+        usr.setPassword(getMD5(usr.getPassword()));
+       usr.setToken(usr.getToken());
+       usr.setExpired(usr.getExpired());
+        
         interUser.saveUser(usr);
+    /*       List<User> lista = interUser.getUser();
+     for(User objPersona : lista){
+      
+      
+    }*/
         return "Succes";
     }
     	 public List<User> getUser(){
