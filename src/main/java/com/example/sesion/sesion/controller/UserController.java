@@ -98,6 +98,16 @@ public class UserController {
     public String createUser(@RequestBody User usr){
         usr.setId(usr.getId());
         usr.setUser(usr.getUser());
+         List<User> lista = interUser.getUser();
+     for(User objPersona : lista){
+        
+      if(objPersona.getUser().equals(usr.getUser())){
+       
+           
+          return "nSucces";
+      }
+      
+    }
         usr.setPassword(getMD5(usr.getPassword()));
        usr.setToken(usr.getToken());
        usr.setExpired(usr.getExpired());
