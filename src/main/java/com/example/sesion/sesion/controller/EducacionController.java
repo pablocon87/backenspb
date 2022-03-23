@@ -63,7 +63,12 @@ public class EducacionController {
             @RequestParam("principal") String nuevoPrincipal,
             @RequestParam("segunda") String nuevoSegunda,
             @RequestParam("personaid") Integer nuevoPersonaid ,
-            @RequestParam("urllogo") String nuevoLogo
+            @RequestParam("urllogo") String nuevoLogo,
+            @RequestParam("urlinst") String nuevoUrlinst,
+            @RequestParam("anoinic") String nuevoAnoinic,
+            @RequestParam("anofin") String nuevoAnofin,
+            @RequestParam("titulo") String nuevoTitulo,
+            @RequestParam("persona_id") Long nuevoPersona_id
             ){
             System.out.println("Aver estoy aca "+ nuevoPrincipal + " "+  nuevoSegunda + " "+nuevoPersonaid + " "+ id);
                     
@@ -72,6 +77,11 @@ public class EducacionController {
             educ.setSegunda(nuevoSegunda);
             educ.setUrl_logo(nuevoLogo);
             educ.setId_persona(nuevoPersonaid);
+            educ.setUrlinst(nuevoUrlinst);
+            educ.setAnoinic(nuevoAnoinic);
+            educ.setAnofin(nuevoAnofin);
+            educ.setTitulo(nuevoTitulo);
+            educ.setPersona_id(nuevoPersona_id);
             interEducacion.saveEducacion(educ);
             return educ;
             

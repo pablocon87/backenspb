@@ -11,20 +11,22 @@ import javax.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
-
+/**
+ *
+ * @author pablo
+ */
 @Getter @Setter
 @Entity
-public class Educacion {
+public class Lenprog {
       @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long id;
-    private Integer id_persona;
-    private String principal;
-    private String segunda;
-    private String url_logo;
-    private String urlinst;
-    private String anoinic;
-    private String anofin;
-    private String titulo;
-    private Long persona_id;
+       private Long id;
+       private Integer php;
+       private Integer java;
+       private Integer ruby;
+       private Integer javascript;
+       private Integer typescript;
+       private Integer python;
+       private Integer otros;
+       private Integer persona_id;
 }
