@@ -23,6 +23,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
@@ -34,24 +36,57 @@ public class UserController {
         public User login(@RequestParam("user") String username, @RequestParam("password") String pwd) {
 	           System.out.println("este es user "+ username + " y este es pass " + pwd);
                    
-		String token = getJWTToken(username);
-                String guardar="";
-                Integer expired=getExpired();
+		
 		User user = new User();
                
         List<User> lista = interUser.getUser();
      for(User objPersona : lista){
-         System.out.println("ESTE ES PASS "+objPersona.getPassword()+" "+"este es MD5"+getMD5(pwd));
+        
       if(objPersona.getUser().equals(username) && objPersona.getPassword().equals(getMD5(pwd))){
-          System.out.println("ESTE ES PASS adentro "+objPersona.getPassword()+" "+"este es MD5"+getMD5(pwd));
-           objPersona.setToken(token);
+          if(objPersona.getConec()==0){  
+          objPersona.setConec(1);
+          objPersona.setTimelim("0");
+          objPersona.setAuten(1);
+            interUser.saveUser(objPersona);
+          }else{
+              Integer conec =objPersona.getConec();
+              String token ="nada";
+              objPersona.setToken(token);
+              objPersona.setConec(conec);
+              return objPersona;
+          }
+          String token = getJWTToken(username);
+                String guardar="";
+                Integer expired=getExpired();
+            objPersona.setToken(token);
           objPersona.setExpired(expired);
           guardar="ok";
           return objPersona;
       }
+      if(objPersona.getUser().equals(username) && objPersona.getPassword() !=  (getMD5(pwd))){
+          objPersona.setAuten(objPersona.getAuten()+1);
+          interUser.saveUser(objPersona);
+          if(objPersona.getAuten()>=3){
+              Integer auten = objPersona.getAuten();
+              Long id= objPersona.getId();
+              String token ="nada";
+              objPersona.setToken(token);
+              objPersona.setId(id);
+              objPersona.setAuten(auten);
+              
+              return objPersona;
+          }else{
+              String token ="nada";
+              objPersona.setToken(token);
+              Long id= objPersona.getId();
+              objPersona.setId(id);
+               return objPersona;
+          }
+      }
       
     }
-        
+      String token ="nada";
+        user.setToken(token);
       return user;
                // System.out.println("este es passwor"+user.getPassword()+ "el encriptado es "+getMD5(pwd));
                 /*if ((user.getUser() == null ? username == null : user.getUser().equals(username)) && (user.getPassword() == null ? pwd == null : user.getPassword().equals(getMD5(pwd)))){
@@ -109,8 +144,8 @@ public class UserController {
       
     }
         usr.setPassword(getMD5(usr.getPassword()));
-       usr.setToken(usr.getToken());
-       usr.setExpired(usr.getExpired());
+       usr.setConec(0);
+       usr.setAuten(1);
         
         interUser.saveUser(usr);
     /*       List<User> lista = interUser.getUser();
@@ -124,7 +159,31 @@ public class UserController {
              
         return interUser.getUser();
     }
-		
+@PutMapping("/user/editar/{id}")
+    public User editPersona(@PathVariable Long id,
+            @RequestParam("user") String nuevoUser,
+            @RequestParam("password") String nuevoPassword,
+            @RequestParam("token") String nuevoToken,
+            @RequestParam("expired") Integer nuevoExpired,
+            @RequestParam("conec") Integer nuevoConec,
+            @RequestParam ("auten") Integer nuevoAuten,
+            @RequestParam("timelim") String nuevoTimelim
+            ){
+        
+                    
+            User usr = interUser.findUser(id);
+            usr.setUser(usr.getUser());
+            usr.setPassword(usr.getPassword());
+            usr.setToken(nuevoToken);
+            usr.setExpired(nuevoExpired);
+            usr.setConec(nuevoConec);
+            usr.setAuten(nuevoAuten);
+            usr.setTimelim(nuevoTimelim);
+            interUser.saveUser(usr);
+            
+            return usr;
+            
+              }		
 	
     public static String getMD5(String input) {
  try {

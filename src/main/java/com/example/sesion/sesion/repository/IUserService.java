@@ -16,4 +16,5 @@ public interface IUserService {
     public void saveUser(User usr);
     public void deleteUser(Long id);
     public User findUser(Long id);
+     
 }

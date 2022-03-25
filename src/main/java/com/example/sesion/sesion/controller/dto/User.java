@@ -25,8 +25,9 @@ public class User {
     private String password;
     private String token;
    private Integer expired;
-
- 
+   private Integer conec;
+   private Integer auten;
+   private String timelim;
     /*
     public User(String user, String token,Integer expired) {
         this.user = user;
