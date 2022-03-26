@@ -36,7 +36,7 @@ public class EducacionController {
     //@CrossOrigin(allowedHeaders = "*",origins ="http://localhost:4200",methods={RequestMethod.POST,RequestMethod.GET,RequestMethod.HEAD,RequestMethod.OPTIONS,RequestMethod.PUT})
     @GetMapping("/educacion/traer")
     public List<Educacion> getEducacion(){
-        return interEducacion.getEducacion();
+        return interEducacion.findEducaciondate();
     }
   
        

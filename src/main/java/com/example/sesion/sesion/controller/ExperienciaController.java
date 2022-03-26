@@ -41,7 +41,7 @@ public class ExperienciaController {
      @CrossOrigin(allowedHeaders = "*",origins ="http://localhost:4200",methods={RequestMethod.GET,RequestMethod.HEAD,RequestMethod.OPTIONS,RequestMethod.PUT})
     @GetMapping("/experiencia/traer")
     public List<Experiencia_laboral> getExperiencia_laboral(){
-        return interExperiencia.getExperiencia_laboral();
+        return interExperiencia.findExperiencia_laboraldate();
     }
   
        

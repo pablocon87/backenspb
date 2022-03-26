@@ -123,7 +123,8 @@ public class SesionApplication {
                                 .antMatchers(HttpMethod.PUT,"/personas/editar/{id}").permitAll()*/
                                 .and().authorizeRequests()
 				.antMatchers(HttpMethod.POST,"/user/crear").permitAll().and().authorizeRequests()
-				.antMatchers(HttpMethod.PUT,"/user/editar/{id}").permitAll().anyRequest().authenticated();
+				.antMatchers(HttpMethod.PUT,"/user/editar/{id}").permitAll().and().authorizeRequests()
+				.antMatchers(HttpMethod.PUT,"/user/traer/{user}").permitAll().anyRequest().authenticated();
                                                                                            
                                 
                             

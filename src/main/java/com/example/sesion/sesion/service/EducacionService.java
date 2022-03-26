@@ -38,4 +38,9 @@ public class EducacionService implements IEducacionService{
         Educacion educ = eduRepository.findById(id).orElse(null);
         return educ;
     }
+     @Override
+    public List<Educacion> findEducaciondate(){
+        List<Educacion> listaEdu = eduRepository.findBydate();
+       return listaEdu;
+    }
 }

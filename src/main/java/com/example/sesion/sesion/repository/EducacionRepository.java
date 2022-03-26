@@ -5,12 +5,15 @@
 package com.example.sesion.sesion.repository;
 
 import com.example.sesion.sesion.controller.dto.Educacion;
+import java.util.List;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
 @Configuration
 public interface EducacionRepository extends JpaRepository<Educacion,Long> {
-    
+     @Query(value = "SELECT * FROM educacion ORDER BY anoinic ASC", nativeQuery = true)
+   List<Educacion> findBydate();
 }

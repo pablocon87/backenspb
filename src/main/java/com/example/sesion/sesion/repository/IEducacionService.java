@@ -16,4 +16,5 @@ public interface IEducacionService {
     public void saveEducacion(Educacion educ);
     public void deleteEducacion(Long id);
     public Educacion findEducacion(Long id);
+    public List<Educacion> findEducaciondate();
 }

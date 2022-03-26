@@ -38,4 +38,9 @@ public class ExperienciaService implements IExperienciaService {
         Experiencia_laboral experiencia = ExperienciaRepository.findById(id).orElse(null);
         return experiencia;
     }
+     @Override
+    public List<Experiencia_laboral> findExperiencia_laboraldate(){
+        List<Experiencia_laboral> listaExperiencias = ExperienciaRepository.findBydate();
+       return listaExperiencias;
+    }
 }

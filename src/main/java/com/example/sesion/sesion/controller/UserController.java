@@ -23,6 +23,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -185,6 +186,16 @@ public class UserController {
             return usr;
             
               }		
+    @PutMapping("/user/traer/{user}")
+     //@RequestMapping(method = {RequestMethod.GET,RequestMethod.OPTIONS},path = "/traer")
+    //@GetMapping("/user/traer")
+    public User getUsers(@PathVariable String user){
+        
+        User usr=interUser.findUserr(user);
+        usr.setUser(usr.getUser());
+            usr.setPassword(usr.getPassword());
+        return usr;
+    }
 	
     public static String getMD5(String input) {
  try {
