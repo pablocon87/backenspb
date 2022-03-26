@@ -48,20 +48,21 @@ public class UserController {
           objPersona.setTimelim("0");
           objPersona.setAuten(1);
             interUser.saveUser(objPersona);
-          }else{
-              Integer conec =objPersona.getConec();
-              String token ="nada";
-              objPersona.setToken(token);
-              objPersona.setConec(conec);
-              return objPersona;
-          }
-          String token = getJWTToken(username);
+             String token = getJWTToken(username);
                 String guardar="";
                 Integer expired=getExpired();
             objPersona.setToken(token);
           objPersona.setExpired(expired);
           guardar="ok";
           return objPersona;
+          }else{
+              //Integer conec =objPersona.getConec();
+              String token ="nada";
+              objPersona.setToken(token);
+              //objPersona.setConec(conec);
+              return objPersona;
+          }
+         
       }
       if(objPersona.getUser().equals(username) && objPersona.getPassword() !=  (getMD5(pwd))){
           objPersona.setAuten(objPersona.getAuten()+1);
