@@ -19,6 +19,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 //import javax.swing.JOptionPane;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -27,8 +28,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @RestController
+//@CrossOrigin(allowedHeaders = "*",origins ="http://localhost:4200",methods={RequestMethod.GET,RequestMethod.HEAD,RequestMethod.OPTIONS,RequestMethod.PUT,RequestMethod.POST})
+ @RequestMapping( method = {RequestMethod.POST,RequestMethod.GET,RequestMethod.HEAD,RequestMethod.OPTIONS,RequestMethod.PUT,RequestMethod.DELETE},
+        consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE,MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE},
+        //produces = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
+        produces = {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_FORM_URLENCODED_VALUE})
+
 public class UserController {
         // @CrossOrigin(origins ="http://localhost:4200")
            @Autowired
@@ -131,6 +140,11 @@ public class UserController {
 
 		return "Bearer " + token;
 	}
+        
+         @GetMapping("/user/traer")
+    public List<User> getUser(){
+        return interUser.getUser();
+    }
          @PostMapping("/user/crear")
     public String createUser(@RequestBody User usr){
         usr.setId(usr.getId());
@@ -157,10 +171,10 @@ public class UserController {
     }*/
         return "Succes";
     }
-    	 public List<User> getUser(){
+    /*	 public List<User> getUser(){
              
         return interUser.getUser();
-    }
+    }*/
 @PutMapping("/user/editar/{id}")
     public User editPersona(@PathVariable Long id,
             @RequestParam("user") String nuevoUser,
@@ -169,7 +183,8 @@ public class UserController {
             @RequestParam("expired") Integer nuevoExpired,
             @RequestParam("conec") Integer nuevoConec,
             @RequestParam ("auten") Integer nuevoAuten,
-            @RequestParam("timelim") String nuevoTimelim
+            @RequestParam("timelim") String nuevoTimelim,
+            @RequestParam("rol") Integer nuevoRol
             ){
         
                     
@@ -181,6 +196,7 @@ public class UserController {
             usr.setConec(nuevoConec);
             usr.setAuten(nuevoAuten);
             usr.setTimelim(nuevoTimelim);
+            usr.setRol(nuevoRol);
             interUser.saveUser(usr);
             
             return usr;
@@ -194,6 +210,7 @@ public class UserController {
         User usr=interUser.findUserr(user);
         usr.setUser(usr.getUser());
             usr.setPassword(usr.getPassword());
+            usr.setRol(usr.getRol());
         return usr;
     }
 	

@@ -28,6 +28,7 @@ public class User {
    private Integer conec;
    private Integer auten;
    private String timelim;
+   private Integer rol;
     /*
     public User(String user, String token,Integer expired) {
         this.user = user;
