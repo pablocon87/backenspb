@@ -27,30 +27,18 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author pablo
  */
-//@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
-//@CrossOrigin
 @RestController
 @RequestMapping( method = {RequestMethod.POST,RequestMethod.GET,RequestMethod.HEAD,RequestMethod.OPTIONS,RequestMethod.PUT,RequestMethod.DELETE},
         consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE,MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE},
-        //produces = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
         produces = {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_FORM_URLENCODED_VALUE})
-//@RequestMapping("/personas")
-//@CrossOrigin(origins ="*",allowedHeaders = "*",allowCredentials = "true",)
+
 public class PersonaController  {
    
     @Autowired
     private IPersonaService interPersona;
-        
-    //@CrossOrigin(origins="http://localhost:4200",allowedHeaders = "*")
-  //  @RequestMapping(
- // value = "/personas/traer",
- // produces = "application/json",
- // headers = {"Access-Control-Allow-Origin = http://localhost:4200","Access-Control-Allow-Headers= Origin, Content-Type, Authorization"},
- // method = {RequestMethod.GET, RequestMethod.PUT})
-  //@CrossOrigin(allowedHeaders = "*",origins ="http://localhost:4200",methods={RequestMethod.GET,RequestMethod.HEAD,RequestMethod.OPTIONS,RequestMethod.PUT})
+   
     
     @GetMapping("/personas/traer")
-     //@RequestMapping(method = {RequestMethod.GET,RequestMethod.OPTIONS},path = "/traer")
     public List<Persona> getPersonas(){
         return interPersona.getPersonas();
     }
@@ -67,8 +55,7 @@ public class PersonaController  {
         interPersona.deletePersona(id);
         return "La persona fue eliminada correctamente";
     }
-   //@CrossOrigin(allowCredentials = "true",origins ="http://localhost:4200",methods={RequestMethod.GET,RequestMethod.HEAD,RequestMethod.OPTIONS,RequestMethod.PUT})
-    //@CrossOrigin(origins ="http://localhost:4200")
+
     @PutMapping("personas/editar/{id}")
     public Persona editPersona(@PathVariable Long id,
             @RequestParam("nombre") String nuevoNombre,

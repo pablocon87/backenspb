@@ -23,17 +23,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-//@CrossOrigin(allowedHeaders = "*",origins ="http://localhost:4200",methods={RequestMethod.GET,RequestMethod.HEAD,RequestMethod.OPTIONS,RequestMethod.PUT,RequestMethod.POST})
  @RequestMapping( method = {RequestMethod.POST,RequestMethod.GET,RequestMethod.HEAD,RequestMethod.OPTIONS,RequestMethod.PUT,RequestMethod.DELETE},
         consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE,MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE},
-        //produces = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
         produces = {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_FORM_URLENCODED_VALUE})
 
 public class EducacionController {
             @Autowired
     private IEducacionService interEducacion;
            
-    //@CrossOrigin(allowedHeaders = "*",origins ="http://localhost:4200",methods={RequestMethod.POST,RequestMethod.GET,RequestMethod.HEAD,RequestMethod.OPTIONS,RequestMethod.PUT})
     @GetMapping("/educacion/traer")
     public List<Educacion> getEducacion(){
         return interEducacion.findEducaciondate();
@@ -51,13 +48,7 @@ public class EducacionController {
         interEducacion.deleteEducacion(id);
         return "Succes";
     }
- // @CrossOrigin(allowCredentials = "true",origins ="http://localhost:4200",
-       //   methods={RequestMethod.GET,RequestMethod.HEAD,RequestMethod.OPTIONS,RequestMethod.PUT,RequestMethod.DELETE})
-    //@CrossOrigin(origins ="http://localhost:4200")
-  //  @RequestMapping(
- // value = "/educacion/editar/{id}", 
- // produces = "application/json",
- // method = {RequestMethod.GET, RequestMethod.PUT})
+
     @PutMapping("educacion/editar/{id}")
     public Educacion editEducacion(@PathVariable Long id,
             @RequestParam("principal") String nuevoPrincipal,

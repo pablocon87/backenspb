@@ -32,18 +32,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @RestController
-//@CrossOrigin(allowedHeaders = "*",origins ="http://localhost:4200",methods={RequestMethod.GET,RequestMethod.HEAD,RequestMethod.OPTIONS,RequestMethod.PUT,RequestMethod.POST})
  @RequestMapping( method = {RequestMethod.POST,RequestMethod.GET,RequestMethod.HEAD,RequestMethod.OPTIONS,RequestMethod.PUT,RequestMethod.DELETE},
-        consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE,MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE},
-        //produces = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
+        consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE,MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE},  
         produces = {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_FORM_URLENCODED_VALUE})
 
 public class UserController {
-        // @CrossOrigin(origins ="http://localhost:4200")
+        
            @Autowired
-    private IUserService interUser;
-	@PostMapping("user")
-        public User login(@RequestParam("user") String username, @RequestParam("password") String pwd) {
+private IUserService interUser;
+@PostMapping("user")
+public User login(@RequestParam("user") String username, @RequestParam("password") String pwd) {
 	           System.out.println("este es user "+ username + " y este es pass " + pwd);
                    
 		
@@ -99,28 +97,16 @@ public class UserController {
       String token ="nada";
         user.setToken(token);
       return user;
-               // System.out.println("este es passwor"+user.getPassword()+ "el encriptado es "+getMD5(pwd));
-                /*if ((user.getUser() == null ? username == null : user.getUser().equals(username)) && (user.getPassword() == null ? pwd == null : user.getPassword().equals(getMD5(pwd)))){
-		 
-               System.out.println("Adentro " + token+" "+expired);
-               
-		user.setToken(token);
-                user.setExpired(expired);
-                return user;
-                }else{
-                    user.setUser(username);
-                    user.setPassword(pwd);
-                    return user;
-                }*/
+          
                 
 		
 		
 	}
-      private Integer getExpired(){
+private Integer getExpired(){
           Integer expired=600000;
           return expired;
-      }
-	private String getJWTToken(String username) {
+}
+private String getJWTToken(String username) {
 		String secretKey = "mySecretKey";
 		List<GrantedAuthority> grantedAuthorities = AuthorityUtils
 				.commaSeparatedStringToAuthorityList("ROLE_USER");
@@ -139,24 +125,24 @@ public class UserController {
 						secretKey.getBytes()).compact();
 
 		return "Bearer " + token;
-	}
+}
         
          @GetMapping("/user/traer")
     public List<User> getUser(){
         return interUser.getUser();
     }
-         @PostMapping("/user/crear")
-    public String createUser(@RequestBody User usr){
+@PostMapping("/user/crear")
+public String createUser(@RequestBody User usr){
         usr.setId(usr.getId());
         usr.setUser(usr.getUser());
          List<User> lista = interUser.getUser();
-     for(User objPersona : lista){
+        for(User objPersona : lista){
         
-      if(objPersona.getUser().equals(usr.getUser())){
+            if(objPersona.getUser().equals(usr.getUser())){
        
            
-          return "nSucces";
-      }
+            return "nSucces";
+        }
       
     }
         usr.setPassword(getMD5(usr.getPassword()));
@@ -164,17 +150,10 @@ public class UserController {
        usr.setAuten(1);
         
         interUser.saveUser(usr);
-    /*       List<User> lista = interUser.getUser();
-     for(User objPersona : lista){
-      
-      
-    }*/
+  
         return "Succes";
-    }
-    /*	 public List<User> getUser(){
-             
-        return interUser.getUser();
-    }*/
+}
+ 
 @PutMapping("/user/editar/{id}")
     public User editPersona(@PathVariable Long id,
             @RequestParam("user") String nuevoUser,
@@ -203,8 +182,6 @@ public class UserController {
             
               }		
     @PutMapping("/user/traer/{user}")
-     //@RequestMapping(method = {RequestMethod.GET,RequestMethod.OPTIONS},path = "/traer")
-    //@GetMapping("/user/traer")
     public User getUsers(@PathVariable String user){
         
         User usr=interUser.findUserr(user);
@@ -214,20 +191,20 @@ public class UserController {
         return usr;
     }
 	
-    public static String getMD5(String input) {
- try {
- MessageDigest md = MessageDigest.getInstance("MD5");
- byte[] messageDigest = md.digest(input.getBytes());
- BigInteger number = new BigInteger(1, messageDigest);
- String hashtext = number.toString(16);
+ public static String getMD5(String input) {
+        try {
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        byte[] messageDigest = md.digest(input.getBytes());
+        BigInteger number = new BigInteger(1, messageDigest);
+        String hashtext = number.toString(16);
 
- while (hashtext.length() < 32) {
- hashtext = "0" + hashtext;
- }
- return hashtext;
- }
- catch (NoSuchAlgorithmException e) {
- throw new RuntimeException(e);
- }
+        while (hashtext.length() < 32) {
+        hashtext = "0" + hashtext;
+        }
+        return hashtext;
+        }
+        catch (NoSuchAlgorithmException e) {
+        throw new RuntimeException(e);
+        }
  }
 }

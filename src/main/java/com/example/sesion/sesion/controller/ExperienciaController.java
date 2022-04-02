@@ -32,13 +32,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping( method = {RequestMethod.POST,RequestMethod.GET,RequestMethod.HEAD,RequestMethod.OPTIONS,RequestMethod.PUT,RequestMethod.DELETE},
         consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE,MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE},
-        //produces = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
         produces = {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_FORM_URLENCODED_VALUE})
-//@CrossOrigin(allowedHeaders = "*",origins ="http://localhost:4200",methods={RequestMethod.GET,RequestMethod.HEAD,RequestMethod.OPTIONS,RequestMethod.PUT})
 public class ExperienciaController {
      @Autowired
     private IExperienciaService interExperiencia;
-     @CrossOrigin(allowedHeaders = "*",origins ="http://localhost:4200",methods={RequestMethod.GET,RequestMethod.HEAD,RequestMethod.OPTIONS,RequestMethod.PUT})
     @GetMapping("/experiencia/traer")
     public List<Experiencia_laboral> getExperiencia_laboral(){
         return interExperiencia.findExperiencia_laboraldate();
@@ -55,19 +52,10 @@ public class ExperienciaController {
     @DeleteMapping("/experiencia/borrar/{id}")
     public String deletePersona (@PathVariable Long id){
         interExperiencia.deleteExperiencia_laboral(id);
-        
-        
-        
-       /* String str = "{ \"name\": \"Succes\" }";
-        JSONObject obj = new JSONObject(str);
-        String n = obj.getString("name");*/
         String s="Succes";
-          
-
         return s ;
     }
-  // @CrossOrigin(allowCredentials = "true",origins ="http://localhost:4200",methods={RequestMethod.GET,RequestMethod.HEAD,RequestMethod.OPTIONS,RequestMethod.PUT})
-    //@CrossOrigin(origins ="http://localhost:4200")
+  
     @PutMapping("experiencia/editar/{id}")
     public Experiencia_laboral editPersona(@PathVariable Long id,
             @RequestParam("nombreEmpresa") String nuevoNombreEmpresa,

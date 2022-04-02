@@ -26,16 +26,13 @@ import org.springframework.web.bind.annotation.RestController;
  * 
  */
 @RestController
-//@CrossOrigin(allowedHeaders = "*",origins ="http://localhost:4200",methods={RequestMethod.GET,RequestMethod.HEAD,RequestMethod.OPTIONS,RequestMethod.PUT,RequestMethod.POST})
  @RequestMapping( method = {RequestMethod.POST,RequestMethod.GET,RequestMethod.HEAD,RequestMethod.OPTIONS,RequestMethod.PUT,RequestMethod.DELETE},
         consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE,MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE},
-        //produces = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
         produces = {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_FORM_URLENCODED_VALUE})
 
 public class ConocController {
       @Autowired
     private IConocService interCon;
-      // @CrossOrigin(allowedHeaders = "*",origins ="http://localhost:4200",methods={RequestMethod.GET,RequestMethod.HEAD,RequestMethod.OPTIONS,RequestMethod.PUT})
     @GetMapping("/conoc/traer")
     public List<Conoc> findBydesc(){
         return interCon.findBydesc();
@@ -53,8 +50,7 @@ public class ConocController {
         interCon.deleteConoc(id);
         return "Succes";
     }
-   //@CrossOrigin(allowCredentials = "true",origins ="http://localhost:4200",methods={RequestMethod.GET,RequestMethod.HEAD,RequestMethod.OPTIONS,RequestMethod.PUT})
-    //@CrossOrigin(origins ="http://localhost:4200")
+
     @PutMapping("/conoc/editar/{id}")
     public Conoc editConoc(@PathVariable Long id,
             @RequestParam("personaid") Integer nuevoPersonaid,

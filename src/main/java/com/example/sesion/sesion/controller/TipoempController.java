@@ -24,11 +24,9 @@ import org.springframework.web.bind.annotation.RestController;
  * @author pablo
  */
 @RestController
-//@CrossOrigin(allowedHeaders = "*",origins ="http://localhost:4200",methods={RequestMethod.GET,RequestMethod.HEAD,RequestMethod.OPTIONS,RequestMethod.PUT})
 public class TipoempController {
         @Autowired
     private ITipoemService interTipoemp;
-       @CrossOrigin(allowedHeaders = "*",origins ="http://localhost:4200",methods={RequestMethod.GET,RequestMethod.HEAD,RequestMethod.OPTIONS,RequestMethod.PUT})
     @GetMapping("/tipoem/traer")
     public List<Tipo_empleo> getTipo_empleo(){
         return interTipoemp.getTipo_empleo();
@@ -46,20 +44,13 @@ public class TipoempController {
         interTipoemp.deleteTipo_empleo(id);
         return "La persona fue eliminada correctamente";
     }
-   //@CrossOrigin(allowCredentials = "true",origins ="http://localhost:4200",methods={RequestMethod.GET,RequestMethod.HEAD,RequestMethod.OPTIONS,RequestMethod.PUT})
-    //@CrossOrigin(origins ="http://localhost:4200")
+   
     @PutMapping("tipoemp/editar/{id}")
     public Tipo_empleo editPersona(@PathVariable Long id,
             @RequestParam("nombre") String nuevoNombretip
-            
-            
-            ){
-        
-                    
+            ){       
             Tipo_empleo perso = interTipoemp.findTipo_empleo(id);
             perso.setNombre_tipo(nuevoNombretip);
-            
-            
             return perso;
             
               }

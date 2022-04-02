@@ -38,16 +38,9 @@ public class SesionApplication {
     CorsConfigurationSource corsConfigurationSource() 
     {
         CorsConfiguration configuration = new CorsConfiguration();
-      /*  configuration.addAllowedHeader("x-fhir-starter");
-  configuration.addAllowedHeader("Access-Control-Allow-Origin:http://localhost4200");
-  configuration.addAllowedHeader("Accept");
-  configuration.addAllowedHeader("X-Requested-With");
-  configuration.addAllowedHeader("Content-Type");
-  configuration.addAllowedOrigin("http://localhost4200");
-  configuration.addExposedHeader("Location");
-  configuration.addExposedHeader("Content-Location");https://argpro.herokuapp.com*/
+
         configuration.setAllowCredentials(true);
-        configuration.setAllowedOrigins(Arrays.asList("https://argpro.herokuapp.com"));
+        configuration.setAllowedOrigins(Arrays.asList("https://argpro-f55b0.web.app"));
         configuration.setAllowedHeaders(Arrays.asList("Origin","Content-Type", "Authorization"));
         configuration.setAllowedMethods(Arrays.asList("GET","POST","OPTIONS","PUT","DELETE"));
         configuration.setMaxAge(36000L);
@@ -55,62 +48,16 @@ public class SesionApplication {
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
-/*@Bean
-	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurer() {
-			@Override
-			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/personas/traer").allowedOrigins("http://localhost:7000");
-			}
-		};
-	}*/
+
 		@Override
                 protected void configure(HttpSecurity http) throws Exception {
-                    System.err.println("paso por aca");
+                   
                     CorsRegistry registry = new CorsRegistry();
                     registry.addMapping("/**").allowedOrigins("http://localhost:7000");
                     
-                    //Customizer<HeadersConfigurer<HttpSecurity>> headersCustomizer;
-                     /*  HttpServletResponse response = null ;
-                        response.addHeader( "Content-Type" , "application/x-www-form-urlencoded");
-                        response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
-                        response.addHeader("Access-Control-Allow-Headers","authorization,Origin,Content-Type");
-                        response.addHeader("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTION");
-                       response.addHeader("Access-Control-Allow-Credentials","true");*/
-                   //  http.csrf().disable()
-                           //  .authorizeRequests().antMatchers(HttpMethod.GET,"/hello").permitAll();
-                             //.anyRequest();
-              /*  http.authorizeRequests()
-                .mvcMatchers(HttpMethod.GET, "/personas/traer").permitAll() // GET requests don't need auth
-                .anyRequest()
-            .authenticated();*/
-            /*.and()
-            .oauth2ResourceServer()
-            .jwt();*/
-         
-          
-                           //  http.cors();
-                   /* http.headers()
-                      
-				.frameOptions().sameOrigin()
-				.httpStrictTransportSecurity().disable();*/
-                        //CorsRegistry registry =new CorsRegistry();
-				//http.headers().frameOptions().sameOrigin().httpStrictTransportSecurity().disable();
-				/*.frameOptions().sameOrigin()
-				.httpStrictTransportSecurity().disable();*/
-                               /*  http
-            .csrf()
-                .ignoringAntMatchers()
-            .and().authorizeRequests()
-                .antMatchers("/**")
-                .permitAll();*/
-                   /*            http
-                .authorizeRequests()
-                .anyRequest().authenticated()
-                .and()
-                .httpBasic();*/
+                    
                    http.cors();
-                          //http.cors().and().authorizeRequests().antMatchers("*","/**").permitAll();
+                          
 			http.csrf().disable()
 				.addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
 				.authorizeRequests()                       
