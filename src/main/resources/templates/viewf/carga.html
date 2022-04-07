@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Spring Boot BackEnd</title>
+             
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" integrity="sha384-/frq1SRXYH/bSyou/HUp/hib7RVN1TawQYja658FEOodR/FQBKVqT9Ol+Oz3Olq5" crossorigin="anonymous"/>
+     <script defer src="https://use.fontawesome.com/releases/v6.1.1/js/all.js" integrity="sha384-xBXmu0dk1bEoiwd71wOonQLyH+VpgR1XcDH3rtxrLww5ajNTuMvBdL5SOiFZnNdp" crossorigin="anonymous"></script>
+     <link rel="stylesheet" type="text/css" href="static/styles/view.css" th:href="@{/styles/view.css}" >
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- DATA TABLE -->
+	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">	
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+          <link rel="stylesheet" type="text/css" href="static/styles/donus.css" th:href="@{/styles/donus.css}" >
+        <script src="static/js/donust.js" th:src="@{/js/donust.js}"></script> 
+          <script>
+          /*  window.addEventListener('load', this.loaded.bind(this));*/
+         function loaded() {
+                if(localStorage.getItem("au_token")===null || localStorage.getItem("au_usr") === null){
+                    //alert("hola");
+                    window.location.assign("/");
+                    }
+	      
+	    } 
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div><a onclick=" perSona();" href="#"><i class="fa-solid fa-eye"></i>Persona</a><a onclick="Experiencia();" href="#"><i class="fa-solid fa-eye"></i>Experiencia</a><a onclick="Educacion();" href="#"><i class="fa-solid fa-eye"></i>Educacion</a><a onclick="Conocimiento();" href="#"><i class="fa-solid fa-eye"></i>Conocimientos</a><a href="/"><i class="fa-solid fa-door-closed"></i></a></div>
+        <div id="contenido">
+          
+        <!--<table> <tr> <td> <input type="text" name="company" form="my_form"></td> <button type="button" class="btn btn-success">ok</button> </td> </tr> </table> -->
+        </div>
+            
+        </div>
+        <script>
+           
+
+       function PerS(){
+         /*  for(let i=0;i<medtype.length;i++){*/
+               
+           
+            var xmlHttp = new XMLHttpRequest();
+         //      xmlHttp.open(miInit,true);
+           //  xmlHttp.responseType("","")
+             xmlHttp.open('GET','/personas/traer');
+               xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+               xmlHttp.setRequestHeader('Authorization', localStorage.getItem('au_token').toString());
+               xmlHttp.send();
+             xmlHttp.onreadystatechange = function() {
+    if (this.readyState === 4 && this.status === 200) {
+        
+    let concat="";
+        let comi="'";
+        let c=0;
+        let a=0;
+        let conta=0;
+     let concd="";
+       let arri=[];
+        for(let r of this.responseText){
+            conta+=1;
+            //alert(JSON.stringify(r));
+             if(r === '[' || r === '\\' || r === ']' || r==='"'){
+                // alert("soy r "+r);
+                 
+             }else{
+                 
+                if(r===':'){
+                    c+=1;
+                   
+                    
+                
+                    concat=concat;
+                   arri.push(concat);
+                              console.log(concat);
+                             concat="";
+                  
+                }else{
+                    if(c===1){
+                    concat=concat+r;
+                    c=0;
+                    }else{
+                        if(r===','){
+                        
+                          
+                           
+                            concat=concat;
+                             arri.push(concat);
+                              console.log(concat);
+                             concat="";
+                                a+=1
+                         }else{
+                              if(a===1){
+                              
+                               concat=concat+r;
+                               // arri.push(concat);
+                             
+                                a=0;
+                            }else{
+                               
+                                if(r==='}'){
+                                        
+                                        
+                                       
+                                    concat=concat+comi+r;
+                                    
+                                   
+                                }else{
+                                       
+                                        concat=concat+r;
+                                   
+                                   
+                                }
+                                }
+                         }
+                    }
+                }
+                
+      //window.location.assign("/viewf");
+     }
+      for(let i=0;i<arri.length;i++ ){
+          
+      //console.log(arri[i]);
+         var newDiv = document.createElement("div");
+            var newContent = document.createTextNode(arri[i]);
+            newDiv.appendChild(newContent); //añade texto al div creado.
+            //
+              var currentDiv = document.getElementById("div"+i);
+                document.body.insertBefore(newDiv, currentDiv);
+                            //arri.shift();
+                    
+                    }
+     };
+             /*}*/
+       }
+   }
+       }
+       function perSona(){
+           
+           if(document.getElementsByTagName("br")!==null && document.getElementsByTagName("input")!==null){
+                 var inpT=document.getElementsByTagName("input");
+                    while (inpT.length) {
+                                inpT[0].parentNode.removeChild(inpT[0]);
+                        }
+                     var brs = document.getElementsByTagName("br");
+                             while (brs.length) {
+                                brs[0].parentNode.removeChild(brs[0]);
+                              }
+        }
+                 let concat="";
+        let comi="'";
+        let c=0;
+        let a=0;
+        let conta=0;
+     let concd="";
+          fetch('/personas/traer', {
+        method: 'GET',
+          headers: (
+        {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Authorization': localStorage.getItem('au_token')
+        }
+       )
+        
+        /*body: JSON.stringify({ mail: 'ññññ', password: 'ññññ' })*/
+            })
+           .then(res => res.json())
+           .then(res=> {
+               
+                 
+               let rr=Object.values(res);
+           
+      
+        for(let r of rr){
+            console.log(Object.values(r).length)
+            conta+=1;
+            //alert(JSON.stringify(r));
+             if(r === '[' ||  r === ']' ){
+                // alert("soy r "+r);
+                 
+             }else{
+                 
+                 if(document.getElementById("id") !==null){
+                         for(let i=0;i<Object.values(r).length;i++){
+                       const element = document.getElementById("id"+Object.values(r)[i]);
+                        element.remove(); 
+                        var brs = document.getElementsByTagName("br");
+                             while (brs.length) {
+                                brs[0].parentNode.removeChild(brs[0]);
+                              }
+                             
+                        }
+                    }
+                for(let i=0;i<Object.values(r).length;i++){
+                   
+                    
+                      const para = document.createElement("input");
+                    para.setAttribute("class","form-control");
+                    para.setAttribute("type","text");
+                     para.setAttribute("id","id"+Object.values(r)[i]);
+                  para.value = Object.values(r)[i];
+                  document.getElementById("contenido").appendChild(para);  
+                  
+                }
+                                  
+                                }
+                         }
+                         const para = document.createElement("br");
+                         para.setAttribute("id","br");
+                        document.getElementById("contenido").appendChild(para);
+                    });
+                   // alert(concat);
+             //console.log(concat);
+             
+       }
+       
+ function Experiencia(){
+     
+     if(document.getElementsByTagName("br")!==null && document.getElementsByTagName("input")!==null){
+         
+     
+     var inpT=document.getElementsByTagName("input");
+      while (inpT.length) {
+                                inpT[0].parentNode.removeChild(inpT[0]);
+         }
+      var brs = document.getElementsByTagName("br");
+                             while (brs.length) {
+                                brs[0].parentNode.removeChild(brs[0]);
+                              }
+       }
+      fetch('/experiencia/traer', {
+        method: 'GET',
+          headers: (
+        {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Authorization': localStorage.getItem('au_token')
+        }
+       )
+        
+        /*body: JSON.stringify({ mail: 'ññññ', password: 'ññññ' })*/
+            })
+           .then(res => res.json())
+           .then(res=> {
+               
+                 console.log(res);
+               let rr=Object.values(res);
+           
+      let conta=0;
+        for(let r of rr){
+            console.log(Object.values(r).length)
+            
+            //alert(JSON.stringify(r));
+             if(r === '[' ||  r === ']' ){
+                // alert("soy r "+r);
+                 
+             }else{
+                 
+                 
+                         for(let i=0;i<Object.values(r).length;i++){
+                             if(document.getElementById("exp"+Object.values(r)[i]) !==null){
+                       const element = document.getElementById("exp"+Object.values(r)[i]);
+                        element.remove(); 
+                       
+                              }
+                        }
+                    
+                for(let i=0;i<Object.values(r).length;i++){
+                   conta+=1;
+                   
+                    
+                      const para = document.createElement("input");
+                    para.setAttribute("class","form-control");
+                    para.setAttribute("type","text");
+                     para.setAttribute("id","exp"+Object.values(r)[i]);
+                  para.value = Object.values(r)[i];
+                  document.getElementById("contenido").appendChild(para);
+                  if(conta===8){
+                       const para = document.createElement("br");
+                        document.getElementById("contenido").appendChild(para);
+                        conta=0;
+                   }
+                  
+                }
+                                  
+                                }
+                         }
+                    });
+     
+ }
+ 
+ function Educacion(){
+     
+     if(document.getElementsByTagName("br")!==null && document.getElementsByTagName("input")!==null){
+         
+     
+     var inpT=document.getElementsByTagName("input");
+      while (inpT.length) {
+                                inpT[0].parentNode.removeChild(inpT[0]);
+         }
+      var brs = document.getElementsByTagName("br");
+                             while (brs.length) {
+                                brs[0].parentNode.removeChild(brs[0]);
+                              }
+       }
+      fetch('/educacion/traer', {
+        method: 'GET',
+          headers: (
+        {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Authorization': localStorage.getItem('au_token')
+        }
+       )
+        
+        /*body: JSON.stringify({ mail: 'ññññ', password: 'ññññ' })*/
+            })
+           .then(res => res.json())
+           .then(res=> {
+               
+                 console.log(res);
+               let rr=Object.values(res);
+           
+      let conta=0;
+        for(let r of rr){
+            console.log(Object.values(r).length)
+            
+            //alert(JSON.stringify(r));
+             if(r === '[' ||  r === ']' ){
+                // alert("soy r "+r);
+                 
+             }else{
+                 
+                 
+                       /*  for(let i=0;i<Object.values(r).length;i++){
+                             if(document.getElementById("ed"+Object.values(r)[i]) !==null){
+                       const element = document.getElementById("ed"+Object.values(r)[i]);
+                        element.remove(); 
+                       
+                              }
+                        }*/
+                    
+                for(let i=0;i<Object.values(r).length;i++){
+                   conta+=1;
+                   
+                    
+                      const para = document.createElement("input");
+                    para.setAttribute("class","form-control");
+                    para.setAttribute("type","text");
+                     para.setAttribute("id","ed"+Object.values(r)[i]);
+                  para.value = Object.values(r)[i];
+                  document.getElementById("contenido").appendChild(para);
+                  if(conta===10){
+                      
+                       const para = document.createElement("br");
+                        document.getElementById("contenido").appendChild(para);
+                        conta=0;
+                   }
+                  
+                }
+                                  
+                                }
+                         }
+                    });
+     
+     
+     
+ }
+ function borrar(){
+     
+      if(document.getElementsByTagName("br")!==null && document.getElementsByTagName("input")!==null){
+         
+    
+     var inpT=document.getElementsByTagName("input");
+      while (inpT.length) {
+                                inpT[0].parentNode.removeChild(inpT[0]);
+         }
+      var brs = document.getElementsByTagName("br");
+                             while (brs.length) {
+                                brs[0].parentNode.removeChild(brs[0]);
+                              }
+                               var rdiv=document.getElementsByTagName("div");
+                    let conta=0;
+                    for (let i=0;i<rdiv.length;i++) {
+                        
+                        if(conta>2){
+                    rdiv[3].parentNode.removeChild(rdiv[3]);
+                            }
+                            conta+=1;
+                        }
+      
+      
+                    var rli = document.getElementsByTagName("li");
+                             while (rli.length) {
+                                rli[0].parentNode.removeChild(rli[0]);
+                              }
+                              var rul = document.getElementsByTagName("ul");
+                             while (rul.length) {
+                                rul[0].parentNode.removeChild(rul[0]);
+                              }
+                              var rp = document.getElementsByTagName("p");
+                             while (rp.length) {
+                                rp[0].parentNode.removeChild(rp[0]);
+                              }
+                              var rh = document.getElementsByTagName("h2");
+                             while (rh.length) {
+                                rh[0].parentNode.removeChild(rh[0]);
+                              }
+                              var rsp = document.getElementsByTagName("span");
+                             while (rsp.length) {
+                                rsp[0].parentNode.removeChild(rsp[0]);
+                              }
+       }
+ }
+ function Conocimiento(){
+     
+  borrar();
+      fetch('/conoc/traer', {
+        method: 'GET',
+          headers: (
+        {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Authorization': localStorage.getItem('au_token')
+        }
+       )
+        
+        /*body: JSON.stringify({ mail: 'ññññ', password: 'ññññ' })*/
+            })
+           .then(res => res.json())
+           .then(res=> {
+               
+                 console.log(res);
+               let rr=Object.values(res);
+           
+      let conta=0;
+      let cuenta=0;
+        for(let r of rr){
+            console.log(Object.values(r).length)
+            
+            //alert(JSON.stringify(r));
+             if(r === '[' ||  r === ']' ){
+                // alert("soy r "+r);
+                 
+             }else{
+                 
+                 
+                       /*  for(let i=0;i<Object.values(r).length;i++){
+                             if(document.getElementById("ed"+Object.values(r)[i]) !==null){
+                       const element = document.getElementById("ed"+Object.values(r)[i]);
+                        element.remove(); 
+                       
+                              }
+                        }*/
+                    
+                for(let i=0;i<Object.values(r).length;i++){
+                   conta+=1;
+                   
+                    
+                      const para = document.createElement("input");
+                    para.setAttribute("class","form-control");
+                    para.setAttribute("type","text");
+                     para.setAttribute("id","cn"+Object.values(r)[i]);
+                  para.value = Object.values(r)[i];
+                  document.getElementById("contenido").appendChild(para);
+              
+     
+       
+        
+       
+                   
+                  
+                  if(conta===5){
+                        cuenta+=1;
+                       
+                         const paras = document.createElement("br");
+                        paras.setAttribute("id","br4"+cuenta);
+                        document.getElementById("contenido").appendChild(paras);
+                        Grafico(r.saber,r.sobre,r.de,cuenta);
+                        const para = document.createElement("br");
+                        para.setAttribute("id","br4"+cuenta+1);
+                        document.getElementById("contenido").appendChild(para);
+                        
+                        conta=0;
+                   }
+                  
+                }
+                                  
+                                }
+                         }
+                    });
+     
+     
+     
+ }
+ 
+        </script> 
+    <script src="static/js/aes.js" th:src="@{/js/aes.js}"></script> 
+    </body>
+</html>

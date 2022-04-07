@@ -30,19 +30,23 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @RestController
- @RequestMapping( method = {RequestMethod.POST,RequestMethod.GET,RequestMethod.HEAD,RequestMethod.OPTIONS,RequestMethod.PUT,RequestMethod.DELETE},
+ /*@RequestMapping(value="/*", method = {RequestMethod.POST,RequestMethod.GET,RequestMethod.HEAD,RequestMethod.OPTIONS,RequestMethod.PUT,RequestMethod.DELETE,RequestMethod.PATCH,RequestMethod.TRACE},
         consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE,MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE},  
         produces = {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_FORM_URLENCODED_VALUE})
 
+ */
 public class UserController {
         
            @Autowired
 private IUserService interUser;
+
+
 @PostMapping("user")
 public User login(@RequestParam("user") String username, @RequestParam("password") String pwd) {
-	           System.out.println("este es user "+ username + " y este es pass " + pwd);
+	         
                    
 		
 		User user = new User();
@@ -52,6 +56,7 @@ public User login(@RequestParam("user") String username, @RequestParam("password
         
       if(objPersona.getUser().equals(username) && objPersona.getPassword().equals(getMD5(pwd))){
           if(objPersona.getConec()==0){  
+                System.out.println("este es user "+ username + " y este es pass " + pwd);
           objPersona.setConec(1);
           objPersona.setTimelim("0");
           objPersona.setAuten(1);
@@ -130,6 +135,11 @@ private String getJWTToken(String username) {
          @GetMapping("/user/traer")
     public List<User> getUser(){
         return interUser.getUser();
+    }
+    
+     @GetMapping("/user/conec")
+    public List<User> findByConec(){
+        return interUser.findByConec();
     }
 @PostMapping("/user/crear")
 public String createUser(@RequestBody User usr){

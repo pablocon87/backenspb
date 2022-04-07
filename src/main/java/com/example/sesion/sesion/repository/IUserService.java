@@ -17,4 +17,5 @@ public interface IUserService {
     public void deleteUser(Long id);
     public User findUser(Long id);
      public User findUserr(String user);
+     public  List<User> findByConec();
 }

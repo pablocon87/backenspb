@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+   
+        <title>Spring Boot BackEnd</title>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" integrity="sha384-/frq1SRXYH/bSyou/HUp/hib7RVN1TawQYja658FEOodR/FQBKVqT9Ol+Oz3Olq5" crossorigin="anonymous"/>
+  <script defer src="https://use.fontawesome.com/releases/v6.1.1/js/all.js" integrity="sha384-xBXmu0dk1bEoiwd71wOonQLyH+VpgR1XcDH3rtxrLww5ajNTuMvBdL5SOiFZnNdp" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="static/styles/view.css" th:href="@{/styles/view.css}" >
+        <meta  charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       
+             <script type="text/javascript">
+             function Salir(){
+                alert("salir");
+                let ids=localStorage.getItem("au_id");
+                let usr=localStorage.getItem("au_user");
+                let passw=localStorage.getItem("au_passw");
+                let rol =localStorage.getItem("au_rol");
+                 xmlHttp.open('PUT','/user/editar/'+ids+'?user='+usr
+                                +'&password='+passw
+                                +'&token=""'
+                                +'&expired=""'
+                                +'&conec=0'
+                                +'&auten=1'
+                                +'&timelim=0'
+                                +'&rol='+rol);
+               xmlHttp.setRequestHeader('Content-Type', 'text/html; charset=utf-8');
+               xmlHttp.setRequestHeader('Authorization', localStorage.getItem('au_token'));
+               xmlHttp.send();
+                localStorage.removeItem("au_token");
+                 localStorage.removeItem("au_id");
+                  localStorage.removeItem("au_user");
+                   localStorage.removeItem("au_passw");
+                    localStorage.removeItem("au_rol");
+                window.location.assign("/");
+            }
+            
+	    $(document).ready(function() {
+	       xmlHttp.open('GET','/viewf');
+               xmlHttp.setRequestHeader('Content-Type', 'text/html; charset=utf-8');
+               xmlHttp.setRequestHeader('Authorization', localStorage.getItem('au_token'));
+               xmlHttp.send();
+	    } );
+	</script>
+    </head>
+    <body>
+        <div ><a onclick="Cargar()" href="#"><i class="fa-solid fa-bolt"></i></a><a onclick="verConec()" href="#"><i class="fa-solid fa-eye-low-vision"></i>Ver Conectados</a><a onclick="Salir()" href="#"><i  class="fa-solid fa-door-closed"></i>Salir</a></div>
+        <script>
+            function Salir(){
+                alert("salir");
+                let ids=localStorage.getItem("au_id");
+                let usr=localStorage.getItem("au_usr");
+                let passw=localStorage.getItem("au_passw");
+                let rol =localStorage.getItem("au_rol");
+                 xmlHttp.open('PUT','/user/editar/'+ids+'?user='+usr
+                                +'&password='+passw
+                                +'&token=""'
+                                +'&expired=""'
+                                +'&conec=0'
+                                +'&auten=1'
+                                +'&timelim=0'
+                                +'&rol='+rol);
+               xmlHttp.setRequestHeader('Content-Type', 'text/html; charset=utf-8');
+               xmlHttp.setRequestHeader('Authorization', localStorage.getItem('au_token'));
+               xmlHttp.send();
+                localStorage.removeItem("au_token");
+                 localStorage.removeItem("au_id");
+                  localStorage.removeItem("au_usr");
+                   localStorage.removeItem("au_passw");
+                    localStorage.removeItem("au_rol");
+                window.location.assign("/");
+            }
+        </script>
+          <script src="static/js/aes.js" th:src="@{/js/aes.js}"></script>  
+    </body>
+</html>

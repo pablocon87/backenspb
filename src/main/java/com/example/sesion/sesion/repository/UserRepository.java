@@ -5,6 +5,7 @@
 package com.example.sesion.sesion.repository;
 
 import com.example.sesion.sesion.controller.dto.User;
+import java.util.List;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -20,4 +21,7 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository extends JpaRepository<User,Long> {
   @Query(value = "SELECT * FROM user WHERE user = :user", nativeQuery = true)
   User findByEmailAddress(@Param("user") String emailAddress);
+  @Query(value = "SELECT * FROM user WHERE conec ="+ 1, nativeQuery = true)
+  List<User> findByConec();
+  
 }

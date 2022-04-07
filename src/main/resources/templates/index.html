@@ -1,0 +1,516 @@
+
+
+<html>
+    <head>
+        <title>Sprin Boot Backend Miportfolio</title>
+        
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" integrity="sha384-/frq1SRXYH/bSyou/HUp/hib7RVN1TawQYja658FEOodR/FQBKVqT9Ol+Oz3Olq5" crossorigin="anonymous"/>
+     <script defer src="https://use.fontawesome.com/releases/v6.1.1/js/all.js" integrity="sha384-xBXmu0dk1bEoiwd71wOonQLyH+VpgR1XcDH3rtxrLww5ajNTuMvBdL5SOiFZnNdp" crossorigin="anonymous"></script>
+
+     <link rel="stylesheet" type="text/css" href="static/styles/main.css" th:href="@{/styles/main.css}" >
+     <link rel="stylesheet" type="text/css" href="static/styles/view.css" th:href="@{/styles/view.css}" >
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script> -->
+      
+<script>
+            $(document).ready(function() {
+                if(localStorage.getItem("au_token")!==null){
+                         var xmlHttp = new XMLHttpRequest();
+                   
+            
+            
+                        xmlHttp.open('GET','/viewf');
+                        xmlHttp.setRequestHeader('Content-Type', 'text/html; charset=utf-8');
+                        xmlHttp.setRequestHeader('Authorization', localStorage.getItem('au_token'));
+                        xmlHttp.send();
+                             xmlHttp.onreadystatechange = function() {
+                        if (this.readyState === 4 && this.status === 200) {
+
+                          document.getElementById("modale").innerHTML = this.responseText;
+                          //window.location.assign("/viewf");
+                         }else{
+                             if(this.status === 200){
+                           
+                             }else{  Salir();}
+                         }
+                         };
+                }
+	      
+	    } );
+            
+        </script>
+    </head>
+    <body>
+       <div class="modal-dialog text-center">
+        <div class="col-sm-8 main-section">
+            <div id="userc" class="modal-content" ></div>
+            <div id="modale" class="modal-content">
+                
+        <div id="focap" class="alino" hidden>
+     
+            <form  class="formmargin">
+              <div class="mb-3">
+              <div class="capbox" style="margin-top: 100px;">
+              
+              <div id="CaptchaDiv"></div>
+              
+              <div class="capbox-inner">
+              Coloque el numero:<br>
+              
+              <input type="hidden" id="txtCaptcha">
+              <input type="text" name="CaptchaInput" id="CaptchaInput" size="15"><br>
+              
+              </div>
+              </div>
+              <br>
+              
+              <br>
+              </div>
+              <input type="button" onclick="checkform();" value="Enviar numero" class="subbutx3"><br>
+              
+            </form>
+    </div>
+                <div id="rel"></div>
+                <div id="form" >
+                <div class="col-12 user-img">
+             <img src="static/img/user.png" th:src="@{/img/me.jpg}"/>
+                </div>
+                
+                <form class="col-12"  method="post">
+                    <div class="form-group" id="user-group">
+                        <input type="text" class="form-control" placeholder="Nombre de usuario" id="username" name="username"/>
+                    </div>
+                    <div class="form-group" id="contrasena-group">
+                        <input type="password" class="form-control" placeholder="Contrasena" id="password" name="password"/>
+                    </div>
+                    <button type="button" onclick="load()" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Ingresar </button>
+                </form>
+                </div>   
+                <div class="col-12 forgot">
+                   <!-- <p><a href="#">Recordar contrasena?</a></p> -->
+                  <!--  <p><a href="#" th:href="@{/signup}">Crear Usuario - Registrarse</a> -->
+                </div>
+                <div id="conect" class="alert alert-danger" role="alert" hidden>
+		            Usuario Conectado.
+		        </div>
+                <div id="inval" class="alert alert-danger" role="alert" hidden>
+		            Invalid username and password.
+		        </div>
+		        <div th:if="${param.logout}" class="alert alert-success" role="alert">
+		            You have been logged out.
+		        </div>
+          <div id="bien" class="alert alert-success" role="alert" hidden>
+        
+        Bien echo, aguarde unos segundos
+      </div>
+      <div id="mal" class="alert alert-danger" role="alert" hidden>
+        Coloque bien el codigo
+      </div>
+            </div>
+        </div>
+    </div>
+        <script>
+       var  why = "";
+     var a = Math.ceil(Math.random() * 9)+ '';
+     var b = Math.ceil(Math.random() * 9)+ '';
+     var c = Math.ceil(Math.random() * 9)+ '';
+     var d = Math.ceil(Math.random() * 9)+ '';
+     var e = Math.ceil(Math.random() * 9)+ '';
+    
+     var code = this.a +""+ this.b+"" + this.c+"" + this.d+"" + this.e;
+    document.getElementById("txtCaptcha").value = this.code.toString();
+    document.getElementById("CaptchaDiv").innerHTML = this.code.toString();    
+    
+    
+    function checkform(){
+    
+    
+    if(document.getElementById('CaptchaInput').value == ""){
+    this.why += "- Please Enter CAPTCHA Code.\n";
+    console.log(this.why);
+    }
+    if(document.getElementById('CaptchaInput').value != ""){
+    if(this.ValidCaptcha() == false){
+    this.why += "- The CAPTCHA Code Does Not Match.\n";
+    console.log(this.why);
+    }
+    }
+    if(this.why != ""){
+    this.why;
+    return false;
+    }
+    return true;
+}
+    
+   
+    
+function ValidCaptcha(){
+    var str1 = this.removeSpaces(document.getElementById('txtCaptcha').value);
+    var str2 = this.removeSpaces(document.getElementById('CaptchaInput').value);
+    document.getElementById("mal").hidden=true;
+    if (str1 === str2){
+        
+      document.getElementById("bien").hidden=false;
+       setTimeout(() => {
+           document.getElementById("bien").hidden=true;
+           document.getElementById("focap").hidden=true;
+           document.getElementById("form").hidden=false;
+      localStorage.removeItem('conta')
+      this.why="";
+     
+    },5000)
+    return true;
+    }else{
+         
+       document.getElementById("mal").hidden=false;
+        
+    return false;
+    }
+    }
+    
+    
+function removeSpaces(string){
+    return string.split(' ').join('');
+}
+function verConec(){
+      var decryptedrol = CryptoJS.AES.decrypt(localStorage.getItem("au_rol"), "Secret Passphrase");
+               var decryptedid = CryptoJS.AES.decrypt(localStorage.getItem("au_id"), "Secret Passphrase");
+                 var length= 0;
+                 Object.values(decryptedrol);
+                  Object.values(decryptedid);
+              /*  for(var key in decryptedrol) {
+                    if(decryptedrol.hasOwnProperty(key)){
+                        length++;
+                    }
+                }*/
+               
+                /* var lengths= 0;
+                for(var key in decryptedid) {
+                    if(decryptedid.hasOwnProperty(key)){
+                        lengths++;
+                    }
+                }*/
+               
+                for(let i=0;i<Object.values(decryptedrol).length;i++){
+                   decryptedrol= Object.values(decryptedrol)[1];
+                }
+                 for(let i=0;i<Object.values(decryptedid).length;i++){
+                   decryptedid= Object.values(decryptedid)[1];
+                }
+                
+       if(decryptedrol !== 1){
+           alert("No tiene permiso de Administrador");
+           return;
+           
+       }         
+                var xmlHttp = new XMLHttpRequest();
+                
+                xmlHttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        //alert(JSON.stringify(this.responseText));
+       const myJSON = JSON.stringify(this.responseText);
+        localStorage.setItem("testJSON", myJSON);
+        let texts = localStorage.getItem("testJSON");
+        let obj = JSON.parse(texts);
+       
+        let ver =obj;
+        //alert(JSON.stringify(ver));
+      let concat="";
+        let comi="'";
+        let c=0;
+        let a=0;
+        let conta=0;
+     let concd="";
+       let arri=[];
+        for(let r of ver){
+            conta+=1;
+            //alert(JSON.stringify(r));
+             if(r === '[' || r === '\\' || r === ']' || r==='"'){
+                // alert("soy r "+r);
+                 
+             }else{
+                 
+                if(r===':'){
+                    c+=1;
+                   
+                    
+                
+                    concat=concat;
+                   arri.push(concat);
+                              console.log(concat);
+                             concat="";
+                  
+                }else{
+                    if(c===1){
+                    concat=concat+r;
+                    c=0;
+                    }else{
+                        if(r===','){
+                        
+                          
+                           
+                            concat=concat;
+                             arri.push(concat);
+                              console.log(concat);
+                             concat="";
+                                a+=1
+                         }else{
+                              if(a===1){
+                              
+                               concat=concat+r;
+                               // arri.push(concat);
+                             
+                                a=0;
+                            }else{
+                               
+                                if(r==='}'){
+                                        
+                                        
+                                       
+                                    concat=concat+comi+r;
+                                    
+                                   
+                                }else{
+                                       
+                                        concat=concat+r;
+                                   
+                                   
+                                }
+                                }
+                         }
+                    }
+                }
+                
+               
+               
+                     
+                 
+             }
+             //arri.push(concat);
+             //console.log(Object.keys(arri).lenght);
+           /*  var length= 0;
+                for(var key in arri) {
+                    if(data.hasOwnProperty(key)){
+                        length++;
+                    }
+                }*/
+              if(arri.length ===16){
+                  //alert("lenght"+arri[3]);
+                  
+             document.getElementById("userc").innerHTML=arri[3].toString();
+            
+                     for(let i=0;i<arri.length;i++ ){
+          
+                            arri.shift();
+                    
+                    }
+             }
+             
+        }
+       
+      // for(let i=0;i<arri.lenght;i++ ){
+          
+     //  }
+       
+      
+        
+    }};
+                 xmlHttp.open('GET','/user/conec');
+               xmlHttp.setRequestHeader('Content-Type', 'text/html; charset=utf-8');
+               xmlHttp.setRequestHeader('Authorization', localStorage.getItem('au_token'));
+               xmlHttp.send();
+                
+            }
+       function Salir(){
+                   var xmlHttp = new XMLHttpRequest();
+               var decryptedrol = CryptoJS.AES.decrypt(localStorage.getItem("au_rol"), "Secret Passphrase");
+               var decryptedid = CryptoJS.AES.decrypt(localStorage.getItem("au_id"), "Secret Passphrase");
+                 var length= 0;
+                 Object.values(decryptedrol);
+                  Object.values(decryptedid);
+              /*  for(var key in decryptedrol) {
+                    if(decryptedrol.hasOwnProperty(key)){
+                        length++;
+                    }
+                }*/
+               
+                 var lengths= 0;
+                for(var key in decryptedid) {
+                    if(decryptedid.hasOwnProperty(key)){
+                        lengths++;
+                    }
+                }
+               
+                for(let i=0;i<Object.values(decryptedrol).length;i++){
+                   decryptedrol= Object.values(decryptedrol)[1];
+                }
+                 for(let i=0;i<Object.values(decryptedid).length;i++){
+                   decryptedid= Object.values(decryptedid)[1];
+                }
+               
+                let ids=decryptedid;
+                let usr=localStorage.getItem("au_usr");
+                let passw=localStorage.getItem("au_passw");
+                let rol =decryptedrol;
+                
+                 xmlHttp.open('PUT','/user/editar/'+ids+'?user='+usr+'&password='+passw+'&token=0'+'&expired='+0+'&conec='+0+'&auten='+1+'&timelim=0'+'&rol='+rol);
+               xmlHttp.setRequestHeader('Content-Type', 'text/html; charset=utf-8');
+               xmlHttp.setRequestHeader('Authorization', localStorage.getItem('au_token'));
+               xmlHttp.send();
+                xmlHttp.onreadystatechange = function() {
+                        if (this.readyState === 4 && this.status === 200) {
+                            localStorage.removeItem("au_token");
+                                            localStorage.removeItem("au_id");
+                                             localStorage.removeItem("au_usr");
+                                              localStorage.removeItem("au_passw");
+                                               localStorage.removeItem("au_rol");
+                                           window.location.assign("/");
+                          //window.location.assign("/viewf");
+                         }
+                         };
+               
+            }
+function load(){
+    //document.getElementById("conect").hidden=true;
+    //document.getElementById("inval").hidden=true;
+  var user=$('#username').val();
+ var password=$('#password').val();
+$.ajax
+ ({
+   type:'POST',	
+  url:'http://localhost:8080/user',
+  data:{user:user,password:password},
+  
+  success:function(response) 
+  {
+  // alert("mensaje "+mensaj+ " response "+response);
+  //alert(JSON.stringify(response));
+  if(response.rol===0){
+      alert("No tiene Permiso para ingresar");
+      return;
+      
+  }
+  if(response.token !="nada"){
+     
+       var encryptedrol = CryptoJS.AES.encrypt(""+response.rol+"", "Secret Passphrase");
+       var encryptedid = CryptoJS.AES.encrypt(""+response.id+"", "Secret Passphrase");
+      //var decrypted = CryptoJS.AES.decrypt(encrypted, "Secret Passphrase");
+     // alert(encryptedrol);
+      localStorage.setItem("au_token",response.token);
+      localStorage.setItem("au_usr",response.user);
+      localStorage.setItem("au_passw",response.password);
+      localStorage.setItem("au_id",encryptedid);
+      localStorage.setItem("au_rol",encryptedrol);
+    /*  var myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'text/html; charset=utf-8');
+        myHeaders.append('Authorization', localStorage.getItem('au_token'));
+     var formData = new FormData();
+         formData.append('Content-Type', 'application/x-www-form-urlencoded');
+        formData.append('Authorization', localStorage.getItem('au_token'));
+        var myInit = { method: 'GET',
+                   headers: myHeaders,
+                   url:'/view',
+                   mode: 'cors',
+                   cache: 'default' };*/
+            
+            //window.location.assign("/view",myHeaders);
+      var xmlHttp = new XMLHttpRequest();
+         //      xmlHttp.open(miInit,true);
+           //  xmlHttp.responseType("","")
+             xmlHttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        
+      document.getElementById("modale").innerHTML = this.responseText;
+      //window.location.assign("/viewf");
+     }
+     };
+               xmlHttp.open('GET','/viewf');
+               xmlHttp.setRequestHeader('Content-Type', 'text/html; charset=utf-8');
+               xmlHttp.setRequestHeader('Authorization', localStorage.getItem('au_token'));
+               xmlHttp.send();
+         
+  }else{
+      if(response.conec===1){
+          if(localStorage.getItem("conta") === null){
+              localStorage.setItem("conta",'1')
+              document.getElementById("inval").hidden=true;
+               
+               return;
+          }
+             
+          
+          if(localStorage.getItem("conta") === '1'){
+              localStorage.setItem("conta",'2')
+               document.getElementById("inval").hidden=true;
+               
+               return;
+          }
+          if(localStorage.getItem("conta") === '2'){
+              localStorage.setItem("conta",'3')
+               document.getElementById("inval").hidden=true;
+               
+               return;
+          }
+          if(localStorage.getItem("conta") === '3'){
+             document.getElementById("form").hidden=true;
+             document.getElementById("focap").hidden=false;
+             document.getElementById("conect").hidden=false;
+          document.getElementById("inval").hidden=true;
+        document.getElementById("conec").hidden=true;
+          }
+          
+      }else{
+          if(localStorage.getItem("conta") === null){
+              localStorage.setItem("conta",'1')
+              document.getElementById("inval").hidden=false;
+              return;
+          }
+          if(localStorage.getItem("conta") === '1'){
+              localStorage.setItem("conta",'2')
+               document.getElementById("inval").hidden=false;
+              return;
+          }
+          if(localStorage.getItem("conta") === '2'){
+              localStorage.setItem("conta",'3')
+               document.getElementById("inval").hidden=false;
+              return;
+          }
+          if(localStorage.getItem("conta") === '3'){
+             document.getElementById("form").hidden=true;
+             document.getElementById("focap").hidden=false;
+             document.getElementById("inval").hidden=false;
+                document.getElementById("inval").hidden=true;
+                  document.getElementById("conec").hidden=true;
+                  return;
+          }
+      
+        }
+  }
+  
+    
+  //window.setInterval('repro()',10000);
+}
+
+
+   
+   
+  
+ });
+}
+
+function Cargar(){
+    window.location.assign('/Carga')
+}
+
+        </script>
+          <script src="static/js/aes.js" th:src="@{/js/aes.js}"></script>  
+    </body>
+</html>

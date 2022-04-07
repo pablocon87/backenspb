@@ -46,4 +46,9 @@ public class UserService implements IUserService {
         User usr = userRepository.findByEmailAddress(user);
         return usr;
     }
+     @Override
+    public List<User> findByConec(){
+        List<User> listaCone = userRepository.findByConec();
+       return listaCone;
+    }
 }
