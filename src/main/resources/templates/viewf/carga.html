@@ -381,7 +381,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
      
       if(document.getElementsByTagName("br")!==null && document.getElementsByTagName("input")!==null){
          
-    
+     
      var inpT=document.getElementsByTagName("input");
       while (inpT.length) {
                                 inpT[0].parentNode.removeChild(inpT[0]);
@@ -390,16 +390,34 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                              while (brs.length) {
                                 brs[0].parentNode.removeChild(brs[0]);
                               }
-                               var rdiv=document.getElementsByTagName("div");
-                    let conta=0;
-                    for (let i=0;i<rdiv.length;i++) {
-                        
-                        if(conta>2){
-                    rdiv[3].parentNode.removeChild(rdiv[3]);
-                            }
-                            conta+=1;
+                        var rdiv=document.getElementsByTagName("div");
+                    //let conta=0;
+                    while (rdiv.length) {
+                                if( rdiv[3] !== undefined){
+                                        rdiv[3].parentNode.removeChild(rdiv[3]);
+                                    }else{
+                                        return;
+                                    }
+                              }
+                   // for (let i=0;i<rdiv.length;i++) {
+                        //if(conta>2){
+                       // if( rdiv[3] !== undefined){
+                           
+                      //      if(i>2){
+                      //      rdiv[3].parentNode.removeChild(rdiv[3]);
+                           //} 
+                      //      conta+=1;
+                       // }
+                        //}
+                        //}
+                     
+                        if(document.getElementById("donus1") !==null){
+                        document.getElementById("donus1").remove();
                         }
-      
+                        if(document.getElementById("donus7") !==null){
+                        document.getElementById("donus7").remove();
+                        }
+                        
       
                     var rli = document.getElementsByTagName("li");
                              while (rli.length) {
@@ -445,6 +463,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
            
       let conta=0;
       let cuenta=0;
+      let cont=0;
         for(let r of rr){
             console.log(Object.values(r).length)
             
@@ -470,7 +489,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                       const para = document.createElement("input");
                     para.setAttribute("class","form-control");
                     para.setAttribute("type","text");
-                     para.setAttribute("id","cn"+Object.values(r)[i]);
+                     para.setAttribute("id","cn"+ Object.values(r)[i]);
                   para.value = Object.values(r)[i];
                   document.getElementById("contenido").appendChild(para);
               
@@ -478,15 +497,38 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
        
         
        
-                   
+                   // <input id="ext" data-id='ex1RangePicker' oninput="ValorRanT()"  type="range" data-min="0" data-max="20" data-step="1" data-value="0" />
+            //<div id="demo"></div>
                   
                   if(conta===5){
                         cuenta+=1;
-                       
+                       const parat=document.createElement("input");
+                       parat.setAttribute("id","ext"+r.de);
+                       parat.setAttribute("oninput","ValorRanT("+r.saber+","+"'"+r.sobre+"'"+","+"'"+r.de+"'"+","+cuenta+")");
+                       parat.setAttribute("data-id","ex1RangePicker");
+                       parat.setAttribute("type","range");
+                       parat.value=r.saber;
+                        document.getElementById("contenido").appendChild(parat);
+                        const parats=document.createElement("div");
+                       parats.setAttribute("id","demo"+r.de);
+                       parats.innerHTML=r.saber;
+                        document.getElementById("contenido").appendChild(parats);
                          const paras = document.createElement("br");
                         paras.setAttribute("id","br4"+cuenta);
                         document.getElementById("contenido").appendChild(paras);
+                         const parass = document.createElement("div");
+                        parass.setAttribute("id","div"+cuenta);
+                        document.getElementById("contenido").appendChild(parass);
                         Grafico(r.saber,r.sobre,r.de,cuenta);
+                        
+                         const parasst = document.createElement("input");
+                        parasst.setAttribute("id","inpt"+cuenta);
+                        parasst.setAttribute("type","button");
+                        parasst.setAttribute("class","btn btn-primary");
+                        parasst.setAttribute("onclick","Edit("+r.id+","+"'"+r.sobre+"'"+","+"'"+r.de+"'"+","+r.saber+","+r.persona_id+")");
+                        parasst.value="Aplicar";
+                        document.getElementById("div"+cuenta).appendChild(parasst);
+                        
                         const para = document.createElement("br");
                         para.setAttribute("id","br4"+cuenta+1);
                         document.getElementById("contenido").appendChild(para);
@@ -500,10 +542,138 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                          }
                     });
      
-     
+    
      
  }
+ function Edit(edi,sobre,de,saber,personaid){
+     let personaids = document.getElementById("cn"+personaid).value;
+     let sobres= document.getElementById("cn"+sobre).value;
+     let des=document.getElementById("cn"+de).value;
+     let sabers=document.getElementById("cn"+saber).value;
+ fetch('/conoc/editar/'+edi+'?personaid='+personaids+'&sobre='+sobres+'&de='+de+'&saber='+sabers, {
+        method: 'PUT',
+          headers: (
+        {
+          'Content-Type': 'application/json',
+          'Authorization': localStorage.getItem('au_token')
+        }
+       ),
+        body:{title: 'Angular PUT Request Example'}
+        /*body: JSON.stringify({ mail: 'ññññ', password: 'ññññ' })*/
+            })
+           .then(res => res.json())
+           .then(res=> {
+               alert("Se Modifico correctamente");
+               Conocimiento();
+             });
+ }
+ function borrarAd(cuenta){
+      if ( document.getElementById("donus"+cuenta) !==null){
+         var rmdiv= document.getElementById("donus"+cuenta);
+         rmdiv.remove();
+        }
+      
+        var p1=document.getElementById("p"+cuenta);
+        if(p1 !==null){
+        p1.remove();
+        }
+         var p2=document.getElementById("p2"+cuenta);
+         if(p2 !==null){
+        p2.remove();
+        }
+   
+         var p3=document.getElementById("p3"+cuenta);
+         if(p3 !==null){
+        p3.remove();
+        }
+       
+         var p4=document.getElementById("p4"+cuenta);
+         if(p4 !==null){
+        p4.remove();
+        }
+       if(document.getElementById("span"+cuenta) !== null){
+        document.getElementById("span"+cuenta).remove;
+         }
+                  if(document.getElementById("donut-chart"+cuenta)!==null){
+                       document.getElementById("donut-chart"+cuenta).remove;
+                  }
+            if(  document.getElementById("titular"+cuenta) !==null){
+             document.getElementById("titular"+cuenta).remove;
+                 }
+         if(document.getElementById("br"+cuenta) !== null){
+          document.getElementById("br"+cuenta).remove;
+      }
+             if(document.getElementById("porcion11"+cuenta) !==null){
+         document.getElementById("porcion11"+cuenta).remove;
+     }
+         if(document.getElementById("porcion22"+cuenta) !==null){
+          document.getElementById("porcion22"+cuenta).remove;
+          }
+             if(document.getElementById("ques"+cuenta) !==null){
+          document.getElementById("ques"+cuenta).remove;
+      }
+             if(document.getElementById("ques2"+cuenta) !==null){
+           document.getElementById("ques2"+cuenta).remove;
+       }
+           
+        if(document.getElementById("ios"+cuenta) !==null){
+        document.getElementById("ios"+cuenta).remove;
+        }
+        if(document.getElementById("mac"+cuenta) !==null){
+        document.getElementById("mac"+cuenta).remove;
+        }
+             if(document.getElementById("porcion1"+cuenta) !==null){
+        document.getElementById("porcion1"+cuenta).remove;
+        }
+                if(document.getElementById("porcion2"+cuenta) !==null){
+        document.getElementById("porcion2"+cuenta).remove;
+        }
+            
+                     if(document.getElementById("center-date"+cuenta) !==null){
+        document.getElementById("center-date"+cuenta).remove;
+        }
+              
+                      if( document.getElementById("ul"+cuenta) !==null){
+        document.getElementById("ul"+cuenta).remove;
+        }
+                        
+          
+                         if( document.getElementById("li"+cuenta) !==null){
+        document.getElementById("li"+cuenta).remove;
+        }
+       
+                           if( document.getElementById("li2"+cuenta) !==null){
+        document.getElementById("li2"+cuenta).remove;
+        }
+                     
+                 
+ }
+  function ValorRanT(saber,sobre,de,cuenta){
+  var slider = document.getElementById("ext"+de);
+  var output = document.getElementById("demo"+de);
+   
+  if(output !== null){
+  output.innerHTML = slider.value; 
+  document.getElementById("cn"+saber).value= slider.value;
+   saber = parseInt(slider.value);
+   
+  
+    borrarAd(cuenta);
+   let menu = document.getElementById("br4"+cuenta);
+  Grafico(saber,sobre,de,cuenta);
+   
  
+
+  }
+
+function insertAfter(newNode, existingNode) {
+    if(existingNode !==null){
+            existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
+       }
+    }
+ 
+ 
+}
         </script> 
     <script src="static/js/aes.js" th:src="@{/js/aes.js}"></script> 
     </body>

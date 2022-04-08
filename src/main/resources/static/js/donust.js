@@ -1,3 +1,9 @@
+
+function insertAfter(newNode, existingNode) {
+    if(existingNode !==null){
+            existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
+       }
+    }
 function Grafico(porcentaje,sobre,de,conta) {
     
    
@@ -40,12 +46,17 @@ function Grafico(porcentaje,sobre,de,conta) {
 
     let result=(porcentaje*360)/100;
     let para="";
+         
+        // create a new li node
+       
         
                  para = document.createElement("div");
                 para.setAttribute("class","donut-chart-block block");     
                 para.setAttribute("id","donus"+conta);    
-                para.innerHTML = sobre;;
-                document.getElementById("contenido").appendChild(para);
+                para.innerHTML = sobre;
+                
+               
+                document.getElementById("div"+conta).appendChild(para);
                 
             para="";
            para = document.createElement("h2");
@@ -80,6 +91,7 @@ function Grafico(porcentaje,sobre,de,conta) {
             para=""   ;              
             para = document.createElement("div");  
             para.setAttribute("class","quesito ios2");  
+            para.setAttribute("id","ques"+conta);
             para.setAttribute("style","background-color: #E64C65;transform: rotate("+result+"deg);!important");       
             document.getElementById("porcion11"+conta).appendChild(para);
             para="";
@@ -98,6 +110,7 @@ function Grafico(porcentaje,sobre,de,conta) {
                     para="";
                     para = document.createElement("div");  
                     para.setAttribute("class","quesito mac2");
+                    para.setAttribute("id","ques2"+conta);
                     para.setAttribute("style","background-color: #11A8AB;transform: rotate("+res+"deg);!important");          
                     document.getElementById("porcion22"+conta).appendChild(para);
 
@@ -125,6 +138,7 @@ function Grafico(porcentaje,sobre,de,conta) {
             document.getElementById("donut-chart"+conta).appendChild(para);
              para = document.createElement("div");  
             para.setAttribute("class","quesito ios");  
+            para.setAttribute("id","ios"+conta)
             para.setAttribute("style","background-color: #E64C65;transform: rotate("+ress+"deg);!important");       
             document.getElementById("porcion1"+conta).appendChild(para);
             
@@ -138,6 +152,7 @@ function Grafico(porcentaje,sobre,de,conta) {
             para="";
              para = document.createElement("div");  
             para.setAttribute("class","quesito mac");
+            para.setAttribute("id","mac"+conta);
             para.setAttribute("style","background-color: #11A8AB;transform: rotate("+res+"deg);!important");          
             document.getElementById("porcion2"+conta).appendChild(para);
             
@@ -158,6 +173,7 @@ function Grafico(porcentaje,sobre,de,conta) {
             para="";
              para = document.createElement("span");   
             para.setAttribute("class","scnd-font-color"); 
+            para.setAttribute("id","span"+conta); 
             para.innerHTML="2013";
             document.getElementById("br"+conta).appendChild(para);
             para="";
@@ -171,12 +187,14 @@ function Grafico(porcentaje,sobre,de,conta) {
             document.getElementById("ul"+conta).appendChild(para);
             para="";
              para = document.createElement("p");  
-            para.setAttribute("class","ios os scnd-font-color")    
+            para.setAttribute("class","ios os scnd-font-color") ; 
+            para.setAttribute("id","p"+conta);
             para.innerHTML=de; 
             document.getElementById("li"+conta).appendChild(para);
             para="";
              para = document.createElement("p");  
-            para.setAttribute("class","os-percentage")    
+            para.setAttribute("class","os-percentage");   
+            para.setAttribute("id","p2"+conta);
             para.innerHTML=porcentaje+"%";
             document.getElementById("li"+conta).appendChild(para);
             para="";    
@@ -185,12 +203,14 @@ function Grafico(porcentaje,sobre,de,conta) {
             document.getElementById("ul"+conta).appendChild(para);
             para="";
              para = document.createElement("p");  
-            para.setAttribute("class","mac os scnd-font-color")    
+            para.setAttribute("class","mac os scnd-font-color") ;
+            para.setAttribute("id","p3"+conta);
             para.innerHTML="Falta" 
             document.getElementById("li2"+conta).appendChild(para);
             para="";
              para = document.createElement("p");  
-            para.setAttribute("class","os-percentage") 
+            para.setAttribute("class","os-percentage"); 
+            para.setAttribute("id","p4"+conta);
             let porc=100 -porcentaje;   
             para.innerHTML=porc+"%";
             document.getElementById("li2"+conta).appendChild(para);

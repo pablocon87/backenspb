@@ -362,8 +362,8 @@ function verConec(){
                 let rol =decryptedrol;
                 
                  xmlHttp.open('PUT','/user/editar/'+ids+'?user='+usr+'&password='+passw+'&token=0'+'&expired='+0+'&conec='+0+'&auten='+1+'&timelim=0'+'&rol='+rol);
-               xmlHttp.setRequestHeader('Content-Type', 'text/html; charset=utf-8');
-               xmlHttp.setRequestHeader('Authorization', localStorage.getItem('au_token'));
+               xmlHttp.setRequestHeader('Content-Type', 'application/json');
+               //xmlHttp.setRequestHeader('Authorization', localStorage.getItem('au_token'));
                xmlHttp.send();
                 xmlHttp.onreadystatechange = function() {
                         if (this.readyState === 4 && this.status === 200) {
@@ -377,6 +377,19 @@ function verConec(){
                          }
                          };
                
+            }
+function probar(){
+    var xmlHttp = new XMLHttpRequest();
+         xmlHttp.open('PUT','/user/editar/'+1+'?user=pablocon87@gmail.com&password=Pipolo$$5323&token=0'+'&expired='+0+'&conec='+0+'&auten='+1+'&timelim=0'+'&rol='+1);
+               xmlHttp.setRequestHeader('Content-Type', 'application/json');
+               //xmlHttp.setRequestHeader('Authorization', localStorage.getItem('au_token'));
+               xmlHttp.send();
+                xmlHttp.onreadystatechange = function() {
+                        if (this.readyState === 4 && this.status === 200) {
+                            alert("todo ok");
+                          //window.location.assign("/viewf");
+                         }
+                         };        
             }
 function load(){
     //document.getElementById("conect").hidden=true;
