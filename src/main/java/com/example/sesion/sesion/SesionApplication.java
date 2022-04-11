@@ -93,7 +93,7 @@ public class SesionApplication {
   
 
          String[] resources = new String[]{
-            "/include/**","/styles/**","/icons/**","/img/**","/js/**","/layer/**","/","/Carga"};
+            "/include/**","/styles/**","/icons/**","/img/**","/js/**","/layer/**","/","/Carga","/favicon.ico"};
  @Bean
     CorsConfigurationSource corsConfigurationSource() 
     {
