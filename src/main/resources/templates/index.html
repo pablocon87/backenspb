@@ -37,9 +37,12 @@
                           document.getElementById("modale").innerHTML = this.responseText;
                           //window.location.assign("/viewf");
                          }else{
-                             if(this.status === 200){
-                           
-                             }else{  Salir();}
+                             
+                              
+                              if(this.status !== 200){
+                                Salir();
+                              }
+                
                          }
                          };
                 }

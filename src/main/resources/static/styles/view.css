@@ -30,4 +30,21 @@ label{
 .nav-tabs{
 	border-bottom:0px;
 }
-
+a{
+   font-size: 20px;
+   /* width: 156px;
+    height: 156px;*/
+    line-height: 36px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0px rgba(255,255,255,0.4);
+     margin: 0 8px; 
+    /* margin-left: 280px; */
+    color: #3b4652;
+    opacity: 0.75; 
+}
+ a:hover {
+     color:greenyellow;
+    opacity: 0.9;
+  }

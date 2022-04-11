@@ -10,8 +10,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     
   
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     
     
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" integrity="sha384-/frq1SRXYH/bSyou/HUp/hib7RVN1TawQYja658FEOodR/FQBKVqT9Ol+Oz3Olq5" crossorigin="anonymous"/>
@@ -25,9 +25,810 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">	
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
           <link rel="stylesheet" type="text/css" href="static/styles/donus.css" th:href="@{/styles/donus.css}" >
-        <script src="static/js/donust.js" th:src="@{/js/donust.js}"></script> 
+       <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+          <script src="static/js/donust.js" th:src="@{/js/donust.js}"></script> 
           <script>
+              // if(document.querySelector("contenido")!== null){
+                    
+                //}
+     // window.addEventListener("mousemove", event => {
+    //  console.log(`I am detecting mousemove at ${event.pageX}, ${event.pageY} on Document!`);
+    //});
+    let pepe="";
+     let intpepe="";
+     let ct=0;
+     let elm=0;
+      let otro=0;
+    /* document.addEventListener("keypress",e=>{
+        console.log(` ${e.code}`); 
+     });*/
+   
+  window.addEventListener("mouseover", event => {
+   // window.addEventListener("dblclick", event => {
+    //    if(document.getElementById("id1")!==null){
+    //document.getElementById("id1").addEventListener("click",event=>{ 
+        //console.log("toquea");
+    
+   // } );}
+   let ahu=0;
+ 
+if(document.getElementById("idexp1")!==null){
+   
+    for(let i=1;i<=(document.getElementsByTagName("td").length+5);i++){
+         let resu= document.getElementsByTagName("td").length/parseInt(localStorage.getItem("o"));
+               if(i<=resu){
+                   ahu=i;
+               }    
+       for(let b=1;b<=(document.getElementsByTagName("td").length+5);b++){ 
+          //console.log(` ${event.keyCode}`);
+            //document.getElementById("idexp1").addEventListener("click",event=>{
+            
+          if(document.getElementById("inpt"+i)!==null){  
+        document.getElementById("inpt"+i).addEventListener('keydown',e=>{
+            let cod = e.keyCode || e.switch;
+            if(cod===9){
+                downk(b,i);
+            }
+                
+            
+        });
+          document.getElementById("inpt"+i).addEventListener('keypress',e=>{
+           
+            if(e.key==='Enter'){
+                add(b,i);
+            }
+                
+            
+        });
+       
+                    }
+   // });
+          /* if(document.getElementById("inp"+i)!==null){
+                //console.log("LENGTH"+document.getElementsByTagName("td").length +" "+i+" "+b);
+             document.getElementById("inp"+i).addEventListener("keypress",function (e) {
+                            if (e.key === 'Enter') {
+                               // console.log("LENGTH"+document.getElementsByTagName("td").length +" "+i+" "+b);
+                                
+                               // console.log("enter"+document.getElementsByTagName("td").length);
+                              if(localStorage.getItem("add")==="1"){
+                                  console.log("LENGTH"+document.getElementsByTagName("td").length +" "+i+" "+b);
+                                  let pos=document.getElementsByTagName("td").length/7;
+                                  let sumar=7;
+                                  for(let p=0;p<document.getElementsByTagName("td").length;p++){
+                                      if(p>0){
+                                          if (sumar>0){
+                                          sumar-=i;
+                                      }
+                                      console.log("fuera");
+                                        if(document.getElementById("inp"+i)!==null){
+                                        console.log("dentro");
+                                        if(document.getElementById("inp"+i).value !=="Agregar"){  
+                                         let po= (document.getElementsByTagName("td").length+5)-sumar;  
+                                      let list=po;
+                                      console.log("LIST",list);
+                                      //return;
+                                      document.getElementById("td"+pos+"p"+list).innerHTML=document.getElementById("inp"+i).value;
+                                      if (document.getElementById("inp"+i)!==null){
+                                        document.getElementById("inp"+i).remove();
+                                    }
+                                        }
+                                    }
+                                    }
+                                    }
+                                  //document.getElementById("td"+b+"p"+i).innerHTML=document.getElementById("inp"+i).value;
+                                  localStorage.removeItem("add");
+                                  //alert("ADD")
+                                  return;
+                              }}});}*/
+           
+           
+           if(document.getElementById("th"+b+""+i) !==null){
+                
+               document.getElementById("th"+b+""+i).addEventListener("mousemove",event=>{
+                   elm +=1;
+                   
+                   let divi=document.getElementsByTagName("td").length/7;
+                  // console.log("DIVI"+document.getElementsByTagName("td").length+i);
+                   if (i===divi){
+                       if(document.getElementById("add")!==null){
+                           document.getElementById("add").remove();
+                       }
+                        const faicon= document.createElement("i");
+                        faicon.setAttribute("class","fa-solid fa-plus");
+                        faicon.setAttribute("id","add");
+                        faicon.setAttribute("onclick","clickme("+b+","+i+")")
+                        faicon.setAttribute("title","Agregar");
+                        faicon.setAttribute("type","button");
+                         
+                        faicon.setAttribute("style","color:greenyellow;opacity: 0.9");
+                   document.getElementById("th"+b+""+i).appendChild(faicon);
+                         
+                   }
+                   if(elm<=1){
+                       
+                      if(document.getElementById("elim")!==null){
+                         // document.getElementById("th"+b+""+i).innerHTML=localStorage.getItem("th").toString();
+                   document.getElementById("elim").remove();
+                    
+                        }
+                        if(document.getElementById("add")!==null){
+                            document.getElementById("add").remove();
+                        }
+                       // localStorage.setItem("th",document.getElementById("th"+b+""+i).innerHTML);
+                     // document.getElementById("th"+b+""+i).innerHTML="";  
+                   const faicon= document.createElement("i");
+                   faicon.setAttribute("class","fa-solid fa-trash-can");
+                   faicon.setAttribute("id","elim");
+                   faicon.setAttribute("title","Eliminar");
+                   faicon.setAttribute("type","button");
+                    
+                   faicon.setAttribute("style","color:red;opacity: 0.9");
+                   document.getElementById("th"+b+""+i).appendChild(faicon);
+                   //console.log("estoy en la posicion"+b+" de la lista"+i);
+                      
+                    }
+                    
+                  /* setTimeout(function() {
+                        document.getElementById("elim").remove();
+                      }, 2500);*/
+               });elm=0 ;
+               let cu=0;
+               
+               if(document.getElementById("elim")!==null){
+                document.getElementById("elim").addEventListener("click",event=>{
+                        console.log("ahuaaaa");
+                       Swal.fire({
+                                title: '¿Seguro de que desea eliminar el Registro?',
+                                showDenyButton: true,
+                                showCancelButton: true,
+                                confirmButtonText: 'Si Eliminar',
+                                denyButtonText: `No`,
+                              }).then((result) => {
+                                /* Read more about isConfirmed, isDenied below */
+                                if (result.isConfirmed) {
+                                   // console.log("THID"+document.getElementById("th"+b+""+i).innerHTML);
+                                   if(document.getElementById("thh"+b+""+i) ===null){
+                                       return;
+                                   }
+                                    let limpiar=document.getElementById("thh"+b+""+i).innerHTML;
+                                    
+                                    //console.log("LIMPIAR"+limpiar);
+                                    //return;
+                                      fetch('/experiencia/borrar/'+limpiar, {
+                                                          method: 'DELETE',
+                                                            headers: (
+                                                          {
+                                                            'Content-Type': 'application/json',
+                                                            'Authorization': localStorage.getItem('au_token')
+                                                          }
+                                                         )
+                                                         
+                                                         // body:{title: 'Angular POST Request Example'}
+                                                         // body: JSON.stringify({id: document.getElementById("th"+b+""+i).innerHTML})
+                                                              })
+                                                             .then(res => res)
+                                                             .then(res=> { console.log(res);
+                                                                if(res.status ===200){
+                                                                    console.log("200");
+                                                                     ExReload();
+                                                                    Swal.fire('Eliminado!', '', 'success')
+                                                                }
+                                                               
+                                                                 //alert("se borro correctamente");
+                                                             });
+                                  
+                                } else if (result.isDenied) {
+                                  Swal.fire('No se Eliminara', '', 'info')
+                                }
+                              }); 
+                    });}
+               
+                  /* if(document.getElementById("elim")!==null){
+                   document.getElementById("elim").remove();
+                        }*/
+               
+               
+                        }
+        if (document.getElementById("td"+b+"p"+i)!==null)  {
+            //console.log("LOCAL"+localStorage.getItem("posi"));
+          
+        
+           
+           document.getElementById("td"+b+"p"+i).addEventListener("dblclick", event =>{
+                
+                console.log("Estoy en la pos"+" "+b+" "+ "de la lista" +" "+i);
+                  //console.log("ENTRE DBLCLICK");
+                  if(localStorage.getItem('posi')===null){
+                  localStorage.setItem("posi",i);
+                     }
+                  if(localStorage.getItem('cuenta')===null){
+                        localStorage.setItem('cuenta','1');
+                    }
+                  if (localStorage.getItem("posi")!==i){     
+                       localStorage.setItem('posi',i);
+                        localStorage.setItem('cuenta','1');
+                        
+                     localStorage.removeItem('td');
+                                    if(document.getElementById("inpt"+i)!==null){
+                                 
+                                  if ( document.getElementById("td"+b+"p"+i)!==null){
+                                      let ing=document.getElementById("inpt"+i).value;
+                                     
+                                        
+                                      if(Object.values(ing)[0] !=='<'){
+                                    document.getElementById("td"+b+"p"+i).innerHTML=document.getElementById("inpt"+i).value;
+                                        if(document.getElementById("inpt"+i)!==null){
+                                            document.getElementById("inpt"+i).remove();
+                                        }
+                                            }
+                                        
+                                            }
+                                   
+                                
+                            }
+                    
+                }
+                    
+                   if(localStorage.getItem('posi')===i.toString()){
+                       //console.log("ENTRE A POSI");
+                       
+                       ct+=1;
+                       if(localStorage.getItem('ct')===null){
+                       localStorage.setItem('ct',ct);
+                        }
+                   }
+                   let posii=parseInt(localStorage.getItem('ct'));
+                   if(posii===1){
+                       localStorage.setItem('ct','2');
+                       localStorage.setItem('cuenta','1');
+                   }
+                ct+=parseInt(localStorage.getItem('cuenta'));
+                
+               // localStorage.setItem('cuenta',ct);
+                if(localStorage.getItem('cuenta')==='1'){
+             localStorage.setItem('cuenta','2');
+                   localStorage.removeItem('ct');
+                 
+                   //console.log(document.getElementById("th2"+i)+ " "+i);
+                         
+                        
+                        if(Object.values(document.getElementById("td"+b+"p"+i).innerHTML.toString())[0] !== '<'){
+                         pepe=document.getElementById("td"+b+"p"+i).innerHTML.toString();
+                        }
+                        document.getElementById("td"+b+"p"+i).innerHTML="";
+                         //if(localStorage.getItem("td"))
+                          
+                       let inpt= document.createElement("input");
+                       
+                        
+                       inpt.setAttribute("id","inpt"+i);
+                       inpt.setAttribute("type","text");
+                       inpt.setAttribute("value",localStorage.getItem("td"));
+                        
+                       inpt.value=pepe;
+                     
+                       //document.getElementById("tr21").appendChild(inpt);
+                       document.getElementById("td"+b+"p"+i).appendChild(inpt);
+                       
+                       
+                       /* document.getElementById("td"+b+"p"+i).addEventListener("keydown",event=>{
+                            var code = event.keyCode || event.which;
+                           if(code===9){
+                               downk(b,i);
+                                
+                           }*/
+                           /*if(document.getElementById("td"+b+"p"+i)===null || document.getElementById("inpt"+i)===null){
+                               return;
+                           }
+                           document.getElementById("td"+b+"p"+i).innerHTML=document.getElementById("inpt"+i).value;
+                          localStorage.removeItem('td'); 
+                          if(document.getElementById("inpt"+i)!==null){
+                           document.getElementById("inpt"+i).remove();
+                            }
+                           return;*/
+                      /* });*/
+                       inpt.addEventListener("keypress",function (e) {
+                          
+                            if (e.key === 'Enter') {
+                               // console.log("enter"+document.getElementsByTagName("td").length);
+                              if(localStorage.getItem("add")==="1"){
+                                  //console.log("LENGTH"+document.getElementsByTagName("td").length +" "+i+" "+b);
+                                  let pos=document.getElementsByTagName("td").length/7;
+                                  let sumar=7;
+                                  
+                                      document.getElementById("td"+b+"p"+i).innerHTML=document.getElementById("inpt"+i).value;
+                                      if (document.getElementById("inpt"+i)!==null){
+                                        document.getElementById("inpt"+i).remove();
+                                    }
+                                    let id =0;
+                                   let nombreEmpresa="";
+                                   let estrabajoactual="";
+                                   let fechainicio="";
+                                   let fechafin="";
+                                   let descripcion="";
+                                   let persona_id="";
+                                   let tipo_empleo_id="";
+                                    for (let a=1;a <= (document.getElementsByTagName("td").length+5);a++){
+                                 
+                                    if(document.getElementById("td"+b+"p"+a) !==null){
+                                      // console.log(document.getElementsByTagName("td")[a].innerHTML);
+                                     // for(let c=0;c<document.getElementsByTagName("td").length;c++){
+                                      
+                                       
+                                         id =0;
+                                        console.log("ID"+id);
+                                       
+                                       if (nombreEmpresa===""){
+                                         nombreEmpresa=document.getElementById("td"+b+"p"+a).innerHTML;
+                                       }
+                                    if (estrabajoactual==="" || estrabajoactual===nombreEmpresa /*|| estrabajoactual===fechainicio || estrabajoactual===fechafin || descripcion*/){
+                                     estrabajoactual=document.getElementById("td"+b+"p"+a).innerHTML;
+                                    }   
+                                    if (fechainicio==="" || fechainicio===nombreEmpresa || fechainicio===estrabajoactual ){
+                                     fechainicio=document.getElementById("td"+b+"p"+a).innerHTML;
+                                        }
+                                    if (fechafin==="" || fechafin===nombreEmpresa || fechafin===estrabajoactual || fechafin===fechainicio){
+                                     fechafin=document.getElementById("td"+b+"p"+a).innerHTML;
+                                        }
+                                    if (descripcion==="" || descripcion===nombreEmpresa || descripcion===estrabajoactual || descripcion===fechainicio || descripcion===fechafin){    
+                                     descripcion=document.getElementById("td"+b+"p"+a).innerHTML;
+                                    }
+                                    if (persona_id==="" || persona_id===nombreEmpresa || persona_id===estrabajoactual || persona_id===fechainicio || persona_id===fechafin || persona_id===descripcion){
+                                     persona_id=document.getElementById("td"+b+"p"+a).innerHTML;
+                                    }
+                                    if (tipo_empleo_id===""|| tipo_empleo_id===nombreEmpresa || tipo_empleo_id===estrabajoactual || tipo_empleo_id===fechainicio || tipo_empleo_id===fechafin || tipo_empleo_id===descripcion || tipo_empleo_id===persona_id){
+                                     tipo_empleo_id= document.getElementById("td"+b+"p"+a).innerHTML;
+                                    }
+                                    
+                                    //}
+                                   }
+                                }
+                                    if(nombreEmpresa==="Agregar" || estrabajoactual==="Agregar" ||fechainicio==="Agregar"|| fechafin==="Agregar" || descripcion==="Agregar" || persona_id==="Agregar" || tipo_empleo_id==="Agregar"){
+                                          if(document.getElementById("inpt"+i)===null || document.getElementById("td"+b+"p"+i)===null){return;}
+                                        document.getElementById("td"+b+"p"+i).innerHTML=document.getElementById("inpt"+i).value;
+                                            localStorage.removeItem('td'); 
+                                            if(document.getElementById("inpt"+i)!==null){
+                                             document.getElementById("inpt"+i).remove();
+                                              }
+                                              return;
+                                    }
+                                let jason={  id,
+                                   nombreEmpresa,
+                                   estrabajoactual,
+                                  fechainicio,
+                                    fechafin,
+                                   descripcion,
+                                  persona_id,
+                                    tipo_empleo_id};
+                                console.log(JSON.stringify(jason));
+                                
+                                    fetch('/experiencia/crear/', {
+                                                          method: 'POST',
+                                                            headers: (
+                                                          {
+                                                            'Content-Type': 'application/json',
+                                                            'Authorization': localStorage.getItem('au_token')
+                                                          }
+                                                         ),
+                                                         
+                                                         // body:{title: 'Angular POST Request Example'}
+                                                          body: JSON.stringify(jason)
+                                                              })
+                                                             .then(res => res)
+                                                             .then(res=> { console.log(res);
+                                                               if(res.status ===200){
+                                                                    console.log("200");
+                                                                    ExReload();
+                                                                    Swal.fire('Agregado!', '', 'success')
+                                                                }
+                                                                
+                                                                // alert("se Agrego correctamente");
+                                                             });
+                                                             //.catch( err => console.error(err));
+                                        //}
+                                   // }
+                                    //}
+                                    //}
+                                  //document.getElementById("td"+b+"p"+i).innerHTML=document.getElementById("inp"+i).value;
+                                  localStorage.removeItem("add");
+                                  //alert("ADD")
+                                  return;
+                              }
+                                    document.getElementById("td"+b+"p"+i).innerHTML=document.getElementById("inpt"+i).value;
+                                    if(document.getElementById("inpt"+i)!==null){
+                                       document.getElementById("inpt"+i).remove();
+                                   }
+                                   let id =0;
+                                   let nombreEmpresa="";
+                                   let estrabajoactual="";
+                                   let fechainicio="";
+                                   let fechafin="";
+                                   let descripcion="";
+                                   let persona_id="";
+                                   let tipo_empleo_id="";
+                                 for (let a=1;a <= (document.getElementsByTagName("td").length+5);a++){
+                                 
+                                    if(document.getElementById("td"+b+"p"+a) !==null){
+                                      // console.log(document.getElementsByTagName("td")[a].innerHTML);
+                                     // for(let c=0;c<document.getElementsByTagName("td").length;c++){
+                                      
+                                       
+                                         id =document.getElementById("th2"+b).innerHTML;
+                                        console.log("ID"+id);
+                                       
+                                       if (nombreEmpresa===""){
+                                         nombreEmpresa=document.getElementById("td"+b+"p"+a).innerHTML;
+                                       }
+                                    if (estrabajoactual==="" || estrabajoactual===nombreEmpresa /*|| estrabajoactual===fechainicio || estrabajoactual===fechafin || descripcion*/){
+                                     estrabajoactual=document.getElementById("td"+b+"p"+a).innerHTML;
+                                    }   
+                                    if (fechainicio==="" || fechainicio===nombreEmpresa || fechainicio===estrabajoactual ){
+                                     fechainicio=document.getElementById("td"+b+"p"+a).innerHTML;
+                                        }
+                                    if (fechafin==="" || fechafin===nombreEmpresa || fechafin===estrabajoactual || fechafin===fechainicio){
+                                     fechafin=document.getElementById("td"+b+"p"+a).innerHTML;
+                                        }
+                                    if (descripcion==="" || descripcion===nombreEmpresa || descripcion===estrabajoactual || descripcion===fechainicio || descripcion===fechafin){    
+                                     descripcion=document.getElementById("td"+b+"p"+a).innerHTML;
+                                    }
+                                    if (persona_id==="" || persona_id===nombreEmpresa || persona_id===estrabajoactual || persona_id===fechainicio || persona_id===fechafin || persona_id===descripcion){
+                                     persona_id=document.getElementById("td"+b+"p"+a).innerHTML;
+                                    }
+                                    if (tipo_empleo_id===""|| tipo_empleo_id===nombreEmpresa || tipo_empleo_id===estrabajoactual || tipo_empleo_id===fechainicio || tipo_empleo_id===fechafin || tipo_empleo_id===descripcion || tipo_empleo_id===persona_id){
+                                     tipo_empleo_id= document.getElementById("td"+b+"p"+a).innerHTML;
+                                    }
+                                    
+                                    //}
+                                   }
+                                }
+                               /* console.log(id);
+                                console.log("nombre emp "+nombreEmpresa);
+                                console.log("actual "+estrabajoactual);
+                                console.log("fechini"+fechainicio);
+                                   console.log("fefin"+fechafin);
+                                   console.log("des"+descripcion);
+                                   console.log("pid"+ persona_id);
+                                   console.log("tpe"+ tipo_empleo_id);*/
+                                   fetch('/experiencia/editar/'+id+'?nombreEmpresa='+ nombreEmpresa
+                                                +'&estrabajoactual='+ estrabajoactual
+                                                +'&fechainicio='+fechainicio
+                                                +'&fechafin='+fechafin
+                                                +'&descripcion='+descripcion
+                                                +'&persona_id='+  persona_id
+                                                +'&tipo_empleo_id='+ tipo_empleo_id, {
+                                                          method: 'PUT',
+                                                            headers: (
+                                                          {
+                                                            'Content-Type': 'application/json',
+                                                            'Authorization': localStorage.getItem('au_token')
+                                                          }
+                                                         ),
+                                                          body:{title: 'Angular POST Request Example'}
+                                                          /*body: JSON.stringify({ mail: 'ññññ', password: 'ññññ' })*/
+                                                              })
+                                                             .then(res => res.json())
+                                                             .then(res=> { //console.log(res);
+                                                                 Swal.fire('Se modifico Coorectamente!', '', 'success');
+                                                             })
+                                                             .catch( err => console.error(err));
+                                ct=0;
+                                return;
+                            }
+                                console.log(` ${e.keyCode}`);
+                                if(e.key ==='Scape'){
+                             
+                        }
+                            
+                        
+                    });
+                }
+            });
+        }
+   } }
+}
+
+if(document.getElementById("td1")!==null){
+    for(let i=1;i<=13;i++){
+       
+       //document.getElementById("td"+i).innerHTML="";
+    if (document.getElementById("td"+i)!==null)  { 
+    document.getElementById("td"+i).addEventListener("dblclick", event =>{
+       ct+=1;
+       if(ct<=1){
+        if(document.getElementById("inpt"+i)!==null){
+            document.getElementById("inpt"+i).remove();
+        }
+        //console.log(document.getElementById("td"+i).innerHTML);
+         pepe=document.getElementById("td"+i).innerHTML.toString();
+         document.getElementById("td"+i).innerHTML="";
+        localStorage.setItem("td",pepe);
+       let inpt= document.createElement("input");
+       inpt.setAttribute("id","inpt"+i);
+       inpt.setAttribute("type","text");
+       inpt.setAttribute("value",localStorage.getItem("td"));
+       
+       inpt.value=localStorage.getItem("td").toString();
+       //document.getElementById("tr21").appendChild(inpt);
+       document.getElementById("td"+i).appendChild(inpt);
+         inpt.addEventListener("keypress",function (e) {
+    if (e.key === 'Enter') {
+        document.getElementById("td"+i).innerHTML=document.getElementById("inpt"+i).value;
+         if(document.getElementById("inpt"+i)!==null){
+            document.getElementById("inpt"+i).remove();
+        }
+        
+        let acerca_de=document.getElementById("td9").innerHTML.toString();
+        let nombre=document.getElementById("td1").innerHTML.toString();
+        let apellido =document.getElementById("td2").innerHTML.toString();
+        let domicilio =document.getElementById("td3").innerHTML.toString();
+        let fechanac=document.getElementById("td4").innerHTML.toString();
+        let telefono=document.getElementById("td5").innerHTML.toString();
+        let correo=document.getElementById("td6").innerHTML.toString();
+        let sobre_mi=document.getElementById("td7").innerHTML.toString();
+        let url_foto=document.getElementById("td8").innerHTML.toString();
+        let facebook=document.getElementById("td10").innerHTML.toString();
+        let twiter=document.getElementById("td11").innerHTML.toString();
+        let instagram=document.getElementById("td12").innerHTML.toString();
+        let infcont =document.getElementById("td13").innerHTML.toString();
+     
+      fetch('/personas/editar/'+document.getElementById("th21").innerHTML+'?acerca_de='+acerca_de
+  +'&nombre='+nombre
+  +'&apellido='+apellido
+  +'&domicilio='+domicilio
+  +'&fechanac='+fechanac
+  +'&telefono='+telefono
+  +'&correo='+correo
+  +'&sobre_mi='+sobre_mi
+  +'&url_foto='+url_foto
+  +'&facebook='+facebook
+  +'&twiter='+twiter
+  +'&instagram='+instagram
+  +'&infcont='+infcont, {
+        method: 'PUT',
+          headers: (
+        {
+          'Content-Type': 'application/json',
+          'Authorization': localStorage.getItem('au_token')
+        }
+       ),
+        body:{title: 'Angular POST Request Example'}
+        /*body: JSON.stringify({ mail: 'ññññ', password: 'ññññ' })*/
+            })
+           .then(res => res.json())
+           .then(res=> { console.log(res);
+               alert("se modifico correctamente");
+           })
+           .catch( err => console.error(err));   ;
+     ct=0;
+          //  if(document.getElementById("inpt"+i)!==null){
+           // document.getElementById("inpt"+i).remove();
+       // }
+    }
+           
+        });
+   }
+            
+        
+        
+    } 
+        );}} }
+});
+  
+  if(intpepe !==""){  
+    intpepe.addEventListener("keypress",function (e) {
+    if (e.key === 'Enter') {
+     pepe.innerHTML=document.getElementById("inpt"+i).value;
+     
+          //  if(document.getElementById("inpt"+i)!==null){
+           // document.getElementById("inpt"+i).remove();
+       // }
+    }
+           
+        });}
+            //  window.addEventListener("click", function( event ) {
+                // highlight the mouseover target
+             
+                
+           //   }, false);
           /*  window.addEventListener('load', this.loaded.bind(this));*/
+          function onClicka(i){
+              console.log(i);
+              pepe=document.getElementById("td"+i);
+        
+       let inpt= document.createElement("input");
+       inpt.setAttribute("id","inpt"+i);
+       inpt.setAttribute("type","text");
+       inpt.value=pepe;
+       //document.getElementById("td"+i).innerHTML="";
+       if(document.getElementById("td"+i)!==null){
+           document.getElementById("td"+i).remove();
+       //document.getElementById("td"+i).appendChild(inpt);
+       document.getElementById("tr21").appendChild(inpt);
+         }
+            intpepe= document.getElementById("inpt"+i)
+            if(document.getElementById("td"+i)!==null){ 
+            document.getElementById("td"+i).innerHTML="";
+            }
+            return;
+          }
+ function add(b,i){
+     let pos=document.getElementsByTagName("td").length/7;
+                                  let sumar=7;
+                                            if(document.getElementById("inpt"+i)===null || document.getElementById("td"+b+"p"+i)===null){return;}
+                                      document.getElementById("td"+b+"p"+i).innerHTML=document.getElementById("inpt"+i).value;
+                                      if (document.getElementById("inpt"+i)!==null){
+                                        document.getElementById("inpt"+i).remove();
+                                    }
+                                    let id =0;
+                                   let nombreEmpresa="";
+                                   let estrabajoactual="";
+                                   let fechainicio="";
+                                   let fechafin="";
+                                   let descripcion="";
+                                   let persona_id="";
+                                   let tipo_empleo_id="";
+                                    for (let a=1;a <= (document.getElementsByTagName("td").length+5);a++){
+                                 
+                                    if(document.getElementById("td"+b+"p"+a) !==null){
+                                      // console.log(document.getElementsByTagName("td")[a].innerHTML);
+                                     // for(let c=0;c<document.getElementsByTagName("td").length;c++){
+                                      
+                                       
+                                         id =0;
+                                        console.log("ID"+id);
+                                       
+                                       if (nombreEmpresa===""){
+                                         nombreEmpresa=document.getElementById("td"+b+"p"+a).innerHTML;
+                                       }
+                                    if (estrabajoactual==="" || estrabajoactual===nombreEmpresa /*|| estrabajoactual===fechainicio || estrabajoactual===fechafin || descripcion*/){
+                                     estrabajoactual=document.getElementById("td"+b+"p"+a).innerHTML;
+                                    }   
+                                    if (fechainicio==="" || fechainicio===nombreEmpresa || fechainicio===estrabajoactual ){
+                                     fechainicio=document.getElementById("td"+b+"p"+a).innerHTML;
+                                        }
+                                    if (fechafin==="" || fechafin===nombreEmpresa || fechafin===estrabajoactual || fechafin===fechainicio){
+                                     fechafin=document.getElementById("td"+b+"p"+a).innerHTML;
+                                        }
+                                    if (descripcion==="" || descripcion===nombreEmpresa || descripcion===estrabajoactual || descripcion===fechainicio || descripcion===fechafin){    
+                                     descripcion=document.getElementById("td"+b+"p"+a).innerHTML;
+                                    }
+                                    if (persona_id==="" || persona_id===nombreEmpresa || persona_id===estrabajoactual || persona_id===fechainicio || persona_id===fechafin || persona_id===descripcion){
+                                     persona_id=document.getElementById("td"+b+"p"+a).innerHTML;
+                                    }
+                                    if (tipo_empleo_id===""|| tipo_empleo_id===nombreEmpresa || tipo_empleo_id===estrabajoactual || tipo_empleo_id===fechainicio || tipo_empleo_id===fechafin || tipo_empleo_id===descripcion || tipo_empleo_id===persona_id){
+                                     tipo_empleo_id= document.getElementById("td"+b+"p"+a).innerHTML;
+                                    }
+                                    
+                                    //}
+                                   }
+                                }
+                                    if(nombreEmpresa==="Agregar" || estrabajoactual==="Agregar" ||fechainicio==="Agregar"|| fechafin==="Agregar" || descripcion==="Agregar" || persona_id==="Agregar" || tipo_empleo_id==="Agregar"){
+                                          if(document.getElementById("inpt"+i)===null || document.getElementById("td"+b+"p"+i)===null){return;}
+                                        document.getElementById("td"+b+"p"+i).innerHTML=document.getElementById("inpt"+i).value;
+                                            localStorage.removeItem('td'); 
+                                            if(document.getElementById("inpt"+i)!==null){
+                                             document.getElementById("inpt"+i).remove();
+                                              }
+                                              return;
+                                    }
+                                let jason={  id,
+                                   nombreEmpresa,
+                                   estrabajoactual,
+                                  fechainicio,
+                                    fechafin,
+                                   descripcion,
+                                  persona_id,
+                                    tipo_empleo_id};
+                                console.log(JSON.stringify(jason));
+                                
+                                    fetch('/experiencia/crear/', {
+                                                          method: 'POST',
+                                                            headers: (
+                                                          {
+                                                            'Content-Type': 'application/json',
+                                                            'Authorization': localStorage.getItem('au_token')
+                                                          }
+                                                         ),
+                                                         
+                                                         // body:{title: 'Angular POST Request Example'}
+                                                          body: JSON.stringify(jason)
+                                                              })
+                                                             .then(res => res)
+                                                             .then(res=> { console.log(res);
+                                                               if(res.status ===200){
+                                                                    console.log("200");
+                                                                    ExReload();
+                                                                    Swal.fire('Agregado!', '', 'success')
+                                                                }
+                                                                
+                                                                // alert("se Agrego correctamente");
+                                                             });
+                                                             //.catch( err => console.error(err));
+                                        //}
+                                   // }
+                                    //}
+                                    //}
+                                  //document.getElementById("td"+b+"p"+i).innerHTML=document.getElementById("inp"+i).value;
+                                  localStorage.removeItem("add");
+                                  //alert("ADD")
+                                  return;
+ }
+ function downk(b,i){
+      let contia=i+1;
+                           //    console.log("TAB");
+                         
+                            if(document.getElementById("td"+b+"p"+contia)===null){
+                                return;
+                            }
+                             if(Object.values(document.getElementById("td"+b+"p"+contia).innerHTML.toString())[0] !== '<'){
+                         pepe=document.getElementById("td"+b+"p"+contia).innerHTML.toString();
+                        }
+                        document.getElementById("td"+b+"p"+contia).innerHTML="";
+                         //if(localStorage.getItem("td"))
+                          
+                       let inptt= document.createElement("input");
+                       
+                        //document.getElementById("inpt"+i);
+                       inptt.setAttribute("id","inpt"+contia);
+                       inptt.setAttribute("type","text");
+                       inptt.setAttribute("value",localStorage.getItem("td"));
+                        
+                       inptt.value=pepe;
+                       console.log('Soy TT'+inptt.value);
+                       //document.getElementById("tr21").appendChild(inpt);
+                       document.getElementById("td"+b+"p"+contia).appendChild(inptt);
+                        if(document.getElementById("td"+b+"p"+i)===null || document.getElementById("inpt"+i)===null || document.getElementById("td"+b+"p"+contia)===null || document.getElementById("inpt"+contia)===null){
+                               return;
+                           }
+                           document.getElementById("td"+b+"p"+i).innerHTML=document.getElementById("inpt"+i).value;
+                          localStorage.removeItem('td'); 
+                          if(document.getElementById("inpt"+i)!==null){
+                           document.getElementById("inpt"+i).remove();
+                    
+                            }
+                           return;
+ }
+ function clickme(b,i){
+                   
+                       localStorage.setItem("add","1");
+                       console.log("clickme"+b +" "+i);//b2 i 4
+                      let tbd=(document.getElementsByTagName("td").length+7)/7;
+                       let bb=b+1;
+                       let ii=i+1;
+                        if(document.getElementById("tbd"+tbd)!==null){
+                           document.getElementById("tbd"+tbd).remove();
+                       }
+                       const paratd = document.createElement("tbody");
+                       paratd.setAttribute("id","tbd"+tbd);
+                  document.getElementById("idexp1").appendChild(paratd);
+                  const para6 = document.createElement("tr");
+                     para6.setAttribute("id","tr"+b+""+ii);
+                  document.getElementById("tbd"+tbd).appendChild(para6);
+                   const para7 = document.createElement("th");
+                   para7.setAttribute("id","th"+b+""+ii);
+                     para7.setAttribute("scope","row");
+                     para7.innerHTML=i+1;
+                  document.getElementById("tr"+b+""+ii).appendChild(para7);
+                  let coni=parseInt(localStorage.getItem("con"))+1;
+                  for(let y=1;y<=7;y++){
+                     
+                      let im=coni+y;
+                       const para8 = document.createElement("td");
+                       para8.setAttribute("id","td"+ii+"p"+im);
+                       para8.innerHTML="Agregar";
+                        document.getElementById("tr"+b+""+ii).appendChild(para8);
+                        /*const inptu=document.createElement("input");
+                        inptu.setAttribute("type","text");
+                        inptu.setAttribute("id","inpt"+y);
+                        if(y===7){
+                            inptu.setAttribute("title","Presione Enter para Agregar");
+                        }
+                        inptu.value="Agregar";
+                        document.getElementById("td"+ii+"p"+im).appendChild(inptu);*/
+                    }
+                       
+                  
+                   }
          function loaded() {
                 if(localStorage.getItem("au_token")===null || localStorage.getItem("au_usr") === null){
                     //alert("hola");
@@ -39,8 +840,40 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     </head>
     <body>
         <div class="container">
-            <div><a onclick=" perSona();" href="#"><i class="fa-solid fa-eye"></i>Persona</a><a onclick="Experiencia();" href="#"><i class="fa-solid fa-eye"></i>Experiencia</a><a onclick="Educacion();" href="#"><i class="fa-solid fa-eye"></i>Educacion</a><a onclick="Conocimiento();" href="#"><i class="fa-solid fa-eye"></i>Conocimientos</a><a href="/"><i class="fa-solid fa-door-closed"></i></a></div>
-        <div id="contenido">
+            
+              <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link"  onclick=" PersReload();" href="#"><i class="fa-solid fa-eye"></i>Persona</a>
+             
+              </li>
+              <li class="nav-item">
+                <a class="nav-link"   onclick="ExReload();" href="#"><i class="fa-solid fa-eye"></i>Experiencia</a>
+                
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="Educacion();" href="#"><i class="fa-solid fa-eye"></i>Educacion</a>
+                
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="Conocimiento();" href="#"><i class="fa-solid fa-eye"></i>Conocimientos</a>
+                
+              </li>
+              <li class="nav-item">
+                <a class="nav-link"  href="/"><i class="fa-solid fa-door-closed"></i></a>                
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+            
+            <div id="contenido" style="overflow-y: scroll;overflow-x: scroll;">
           
         <!--<table> <tr> <td> <input type="text" name="company" form="my_form"></td> <button type="button" class="btn btn-success">ok</button> </td> </tr> </table> -->
         </div>
@@ -149,8 +982,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
    }
        }
        function perSona(){
-           
-           if(document.getElementsByTagName("br")!==null && document.getElementsByTagName("input")!==null){
+           borrar();
+          /* if(document.getElementsByTagName("br")!==null && document.getElementsByTagName("input")!==null){
                  var inpT=document.getElementsByTagName("input");
                     while (inpT.length) {
                                 inpT[0].parentNode.removeChild(inpT[0]);
@@ -159,7 +992,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                              while (brs.length) {
                                 brs[0].parentNode.removeChild(brs[0]);
                               }
-        }
+        }*/
                  let concat="";
         let comi="'";
         let c=0;
@@ -180,7 +1013,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
            .then(res => res.json())
            .then(res=> {
                
-                 
+                 if(res.status===403){
+                     window.location.assign("/")
+                     return;
+                 }
                let rr=Object.values(res);
            
       
@@ -226,22 +1062,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
              //console.log(concat);
              
        }
-       
- function Experiencia(){
-     
-     if(document.getElementsByTagName("br")!==null && document.getElementsByTagName("input")!==null){
-         
-     
-     var inpT=document.getElementsByTagName("input");
-      while (inpT.length) {
-                                inpT[0].parentNode.removeChild(inpT[0]);
-         }
-      var brs = document.getElementsByTagName("br");
-                             while (brs.length) {
-                                brs[0].parentNode.removeChild(brs[0]);
-                              }
-       }
-      fetch('/experiencia/traer', {
+ function ExReload(){
+     borrar();
+      let conta=0;
+     let con=0;
+          fetch('/experiencia/traer', {
         method: 'GET',
           headers: (
         {
@@ -255,6 +1080,275 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
            .then(res => res.json())
            .then(res=> {
                
+                 if(res.status===403){
+                     window.location.assign("/")
+                     return;
+                 }
+               let rr=Object.values(res);
+           
+      
+        for(let r of rr){
+            
+            conta+=1;
+            //alert(JSON.stringify(r));
+             if(r === '[' ||  r === ']' ){
+                // alert("soy r "+r);
+                 
+             }else{
+                 if (conta<=1){
+                    const para = document.createElement("table");
+                    para.setAttribute("class","table table-dark table-striped");
+                     para.setAttribute("id","idexp"+conta);
+                  document.getElementById("contenido").appendChild(para);
+                  const para2 = document.createElement("thead");
+                     para2.setAttribute("id","thea"+conta);
+                  document.getElementById("idexp"+conta).appendChild(para2);
+                  const para3 = document.createElement("tr");
+                     para3.setAttribute("id","tr1"+conta);
+                  document.getElementById("thea"+conta).appendChild(para3);
+                  
+                  for(let i=0; i<=7;i++){
+                      const para4 = document.createElement("th");
+                  para4.setAttribute("scope","col");
+                     para4.setAttribute("id","th1"+conta);
+                     if(i===0){
+                     para4.innerHTML="id";
+                    }
+                    if(i===1){
+                     para4.innerHTML="Nombre Empresa";
+                    }
+                    if(i===2){
+                     para4.innerHTML="Trabajo Actual";
+                    }
+                    if(i===3){
+                     para4.innerHTML="Fecha Inicio";
+                    }
+                    if(i===4){
+                     para4.innerHTML="Fecha Fin";
+                    }
+                    if(i===5){
+                     para4.innerHTML="Descripcion";
+                    }
+                    if(i===6){
+                     para4.innerHTML="PersonaId";
+                    }
+                    if(i===7){
+                     para4.innerHTML="Tipo Empleo";
+                    }
+                    
+                    
+                  document.getElementById("tr1"+conta).appendChild(para4);
+                }
+                 }
+                const para5 = document.createElement("tbody");
+                     para5.setAttribute("id","tbd"+conta);
+                  document.getElementById("idexp"+1).appendChild(para5);
+                  const para6 = document.createElement("tr");
+                     para6.setAttribute("id","tr2"+conta);
+                  document.getElementById("tbd"+conta).appendChild(para6);
+                  const para7 = document.createElement("th");
+                     para7.setAttribute("scope","row");
+                     para7.setAttribute("id","th2"+conta);
+                     para7.innerHTML=r.id;
+                  document.getElementById("tr2"+conta).appendChild(para7);
+                  const putt=document.createElement("th");
+                    putt.setAttribute("scope","row");
+                     putt.setAttribute("id","thh2"+conta);
+                     putt.setAttribute("hidden","true");
+                     putt.innerHTML=r.id;
+                  document.getElementById("tr2"+conta).appendChild(putt);
+                let o=0;
+                    for(let i=0;i<Object.values(r).length;i++){
+                   
+                   
+                if(i>0){
+                    o=i;
+                    
+                  
+              }
+                  
+                  
+                }
+                localStorage.setItem("o",o);
+               
+                for(let i=0;i<Object.values(r).length;i++){
+                      con+=1;
+                      
+                       let resuu= document.getElementsByTagName("td").length/parseInt(localStorage.getItem("o"));
+                   
+                   
+                 if(i>0){
+                  const para8 = document.createElement("td");
+                  
+                      para8.setAttribute("id","td"+conta+"p"+con);
+                  localStorage.setItem("con",con);
+                                para8.innerHTML=Object.values(r)[i];
+                  document.getElementById("tr2"+conta).appendChild(para8);
+              }
+                }
+                    
+                    
+                                  
+                                }
+                         }
+                        
+                    });
+     
+ }      
+ function PersReload(){
+     borrar();
+       let conta=0;
+     let concd="";
+          fetch('/personas/traer', {
+        method: 'GET',
+          headers: (
+        {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Authorization': localStorage.getItem('au_token')
+        }
+       )
+        
+        /*body: JSON.stringify({ mail: 'ññññ', password: 'ññññ' })*/
+            })
+           .then(res => res.json())
+           .then(res=> {
+               
+                 if(res.status===403){
+                     window.location.assign("/")
+                     return;
+                 }
+               let rr=Object.values(res);
+           
+      
+        for(let r of rr){
+            
+            conta+=1;
+            //alert(JSON.stringify(r));
+             if(r === '[' ||  r === ']' ){
+                // alert("soy r "+r);
+                 
+             }else{
+                 
+                    const para = document.createElement("table");
+                    para.setAttribute("class","table table-dark table-striped");
+                     para.setAttribute("id","id"+conta);
+                  document.getElementById("contenido").appendChild(para);
+                  const para2 = document.createElement("thead");
+                     para2.setAttribute("id","thea"+conta);
+                  document.getElementById("id"+conta).appendChild(para2);
+                  const para3 = document.createElement("tr");
+                     para3.setAttribute("id","tr1"+conta);
+                  document.getElementById("thea"+conta).appendChild(para3);
+                  
+                  for(let i=0; i<=14;i++){
+                      const para4 = document.createElement("th");
+                  para4.setAttribute("scope","col");
+                     para4.setAttribute("id","th1"+conta);
+                     if(i===0){
+                     para4.innerHTML="id";
+                    }
+                    if(i===1){
+                     para4.innerHTML="Nombre";
+                    }
+                    if(i===2){
+                     para4.innerHTML="Apellido";
+                    }
+                    if(i===3){
+                     para4.innerHTML="Domicilio";
+                    }
+                    if(i===4){
+                     para4.innerHTML="Nacimiento";
+                    }
+                    if(i===5){
+                     para4.innerHTML="Telefono";
+                    }
+                    if(i===6){
+                     para4.innerHTML="Correo";
+                    }
+                    if(i===7){
+                     para4.innerHTML="Sobre mi";
+                    }
+                    if(i===8){
+                     para4.innerHTML="Url_Foto";
+                    }
+                    if(i===9){
+                     para4.innerHTML="Acerca De";
+                    }
+                    if(i===10){
+                     para4.innerHTML="Facebook";
+                    }
+                    if(i===11){
+                     para4.innerHTML="Instagram";
+                    }
+                    if(i===12){
+                     para4.innerHTML="Ttwiter";
+                    }
+                    if(i===13){
+                     para4.innerHTML="Info Contacto";
+                    }
+                  document.getElementById("tr1"+conta).appendChild(para4);
+                }
+                const para5 = document.createElement("tbody");
+                     para5.setAttribute("id","tbd"+conta);
+                  document.getElementById("id"+conta).appendChild(para5);
+                  const para6 = document.createElement("tr");
+                     para6.setAttribute("id","tr2"+conta);
+                  document.getElementById("tbd"+conta).appendChild(para6);
+                  const para7 = document.createElement("th");
+                     para7.setAttribute("scope","row");
+                     para7.setAttribute("id","th2"+conta);
+                     para7.innerHTML=r.id;
+                  document.getElementById("tr2"+conta).appendChild(para7);
+                for(let i=0;i<Object.values(r).length;i++){
+                   
+                   
+                if(i>0){
+                  const para8 = document.createElement("td");
+                  para8.setAttribute("id","td"+i)
+                 para8.innerHTML=Object.values(r)[i];
+                  document.getElementById("tr2"+conta).appendChild(para8);
+              }
+                  
+                }
+                                  
+                                }
+                         }
+                        
+                    });
+     
+     
+ }
+ function Experiencia(){
+     borrar();
+   /*  if(document.getElementsByTagName("br")!==null && document.getElementsByTagName("input")!==null){
+         
+     
+     var inpT=document.getElementsByTagName("input");
+      while (inpT.length) {
+                                inpT[0].parentNode.removeChild(inpT[0]);
+         }
+      var brs = document.getElementsByTagName("br");
+                             while (brs.length) {
+                                brs[0].parentNode.removeChild(brs[0]);
+                              }
+       }*/
+      fetch('/experiencia/traer', {
+        method: 'GET',
+          headers: (
+        {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Authorization': localStorage.getItem('au_token')
+        }
+       )
+        
+        /*body: JSON.stringify({ mail: 'ññññ', password: 'ññññ' })*/
+            })
+           .then(res => res.json())
+           .then(res=> {
+                if(res.status===403){
+                     window.location.assign("/")
+                     return;
+                 }
                  console.log(res);
                let rr=Object.values(res);
            
@@ -269,13 +1363,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
              }else{
                  
                  
-                         for(let i=0;i<Object.values(r).length;i++){
+                        /* for(let i=0;i<Object.values(r).length;i++){
                              if(document.getElementById("exp"+Object.values(r)[i]) !==null){
                        const element = document.getElementById("exp"+Object.values(r)[i]);
                         element.remove(); 
                        
                               }
-                        }
+                        }*/
                     
                 for(let i=0;i<Object.values(r).length;i++){
                    conta+=1;
@@ -287,9 +1381,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                      para.setAttribute("id","exp"+Object.values(r)[i]);
                   para.value = Object.values(r)[i];
                   document.getElementById("contenido").appendChild(para);
+                  
                   if(conta===8){
-                       const para = document.createElement("br");
-                        document.getElementById("contenido").appendChild(para);
+                     
+                      
+                       const parae = document.createElement("br");
+                        document.getElementById("contenido").appendChild(parae);
                         conta=0;
                    }
                   
@@ -302,8 +1399,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
  }
  
  function Educacion(){
-     
-     if(document.getElementsByTagName("br")!==null && document.getElementsByTagName("input")!==null){
+     borrar();
+    /* if(document.getElementsByTagName("br")!==null && document.getElementsByTagName("input")!==null){
          
      
      var inpT=document.getElementsByTagName("input");
@@ -314,7 +1411,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                              while (brs.length) {
                                 brs[0].parentNode.removeChild(brs[0]);
                               }
-       }
+       }*/
       fetch('/educacion/traer', {
         method: 'GET',
           headers: (
@@ -328,7 +1425,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             })
            .then(res => res.json())
            .then(res=> {
-               
+                if(res.status===403){
+                     window.location.assign("/")
+                     return;
+                 }
                  console.log(res);
                let rr=Object.values(res);
            
@@ -379,9 +1479,56 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
  }
  function borrar(){
      
-      if(document.getElementsByTagName("br")!==null && document.getElementsByTagName("input")!==null){
-         
-     
+      //if(document.getElementsByTagName("br")!==null || document.getElementsByTagName("input")!==null || document.getElementsByTagName("table") !==null){
+        
+        
+                  for(let i=1;i<15;i++){
+                      if(document.getElementById("idexp1")!==null){
+                          document.getElementById("idexp1").remove();
+                      }
+                      if(document.getElementById("id"+i) !== null){
+                      document.getElementById("id"+i).remove();
+                      }
+                  if(document.getElementById("thea"+i) !== null){    
+                 document.getElementById("thea"+i).remove();
+                  }
+                  if(document.getElementById("tr1"+i) !== null){
+                 document.getElementById("tr1"+i).remove();
+                  }
+                if(document.getElementById("th1"+i) !== null){ 
+                document.getElementById("th1"+i).remove();
+                    }
+                 if(document.getElementById("tdb"+i) !== null){   
+                 document.getElementById("tbd"+i).remove();
+                }
+                if(document.getElementById("tr2"+i) !== null){
+                 document.getElementById("tr2"+i).remove();
+                }
+                if(document.getElementById("th2"+i) !== null){
+                  document.getElementById("th2"+i).remove();
+                }
+                if(document.getElementById("td"+i) !== null){
+                   document.getElementById("td"+i).remove();
+               }
+                  }
+     while(document.getElementsByTagName("table").lenght){
+         document.getElementsByTagName("table")[0].parentNode.removeChild(document.getElementsByTagName("table")[0]);
+     }
+     while(document.getElementsByTagName("tbody").lenght){
+         document.getElementsByTagName("tbody")[0].parentNode.removeChild(document.getElementsByTagName("tbody")[0]);
+     }
+      while(document.getElementsByTagName("tr").lenght){
+         document.getElementsByTagName("tr")[0].parentNode.removeChild(document.getElementsByTagName("tr")[0]);
+     }
+      while(document.getElementsByTagName("th").lenght){
+         document.getElementsByTagName("th")[0].parentNode.removeChild(document.getElementsByTagName("th")[0]);
+     }
+      while(document.getElementsByTagName("td").lenght){
+         document.getElementsByTagName("td")[0].parentNode.removeChild(document.getElementsByTagName("td")[0]);
+     }
+      while(document.getElementsByTagName("thead").lenght){
+         document.getElementsByTagName("thead")[0].parentNode.removeChild(document.getElementsByTagName("thead")[0]);
+     }
      var inpT=document.getElementsByTagName("input");
       while (inpT.length) {
                                 inpT[0].parentNode.removeChild(inpT[0]);
@@ -393,24 +1540,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                         var rdiv=document.getElementsByTagName("div");
                     //let conta=0;
                     while (rdiv.length) {
-                                if( rdiv[3] !== undefined){
-                                        rdiv[3].parentNode.removeChild(rdiv[3]);
+                                if( rdiv[4] !== undefined){
+                                        rdiv[4].parentNode.removeChild(rdiv[4]);
                                     }else{
                                         return;
                                     }
                               }
-                   // for (let i=0;i<rdiv.length;i++) {
-                        //if(conta>2){
-                       // if( rdiv[3] !== undefined){
-                           
-                      //      if(i>2){
-                      //      rdiv[3].parentNode.removeChild(rdiv[3]);
-                           //} 
-                      //      conta+=1;
-                       // }
-                        //}
-                        //}
-                     
+                  
                         if(document.getElementById("donus1") !==null){
                         document.getElementById("donus1").remove();
                         }
@@ -421,11 +1557,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
       
                     var rli = document.getElementsByTagName("li");
                              while (rli.length) {
-                                rli[0].parentNode.removeChild(rli[0]);
+                                 if(rli[5] !== undefined){
+                                rli[5].parentNode.removeChild(rli[5]);
+                            }else{return;}
                               }
                               var rul = document.getElementsByTagName("ul");
                              while (rul.length) {
+                                 if(rul[1]!==undefined){
                                 rul[0].parentNode.removeChild(rul[0]);
+                            }else{return;}
                               }
                               var rp = document.getElementsByTagName("p");
                              while (rp.length) {
@@ -439,7 +1579,29 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                              while (rsp.length) {
                                 rsp[0].parentNode.removeChild(rsp[0]);
                               }
-       }
+                                var rsps = document.getElementsByTagName("table");
+                                console.log(rsps.length);
+                             while (rsps.length) {
+                                rsps[0].parentNode.removeChild(rsps[0]);
+                              }
+                                 var rspss = document.getElementsByTagName("thead");
+                             while (rspss.length) {
+                                rspss[0].parentNode.removeChild(rspss[0]);
+                              }
+                                  var rspsss = document.getElementsByTagName("tr");
+                             while (rspsss.length) {
+                                rspsss[0].parentNode.removeChild(rspsss[0]);
+                              }
+                                   var rspssst = document.getElementsByTagName("th");
+                             while (rspssst.length) {
+                                rspssst[0].parentNode.removeChild(rspssst[0]);
+                              }
+                                     var rspssstt = document.getElementsByTagName("td");
+                             while (rspssstt.length) {
+                                rspssstt[0].parentNode.removeChild(rspssstt[0]);
+                              }
+                              
+       //}
  }
  function Conocimiento(){
      
@@ -457,7 +1619,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             })
            .then(res => res.json())
            .then(res=> {
-               
+                if(res.status===403){
+                     window.location.assign("/")
+                     return;
+                 }
                  console.log(res);
                let rr=Object.values(res);
            
@@ -563,6 +1728,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             })
            .then(res => res.json())
            .then(res=> {
+                if(res.status===403){
+                     window.location.assign("/")
+                     return;
+                 }
                alert("Se Modifico correctamente");
                Conocimiento();
              });
