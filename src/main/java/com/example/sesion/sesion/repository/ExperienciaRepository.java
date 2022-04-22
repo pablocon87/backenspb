@@ -14,6 +14,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 @Configuration
 public interface ExperienciaRepository extends JpaRepository<Experiencia_laboral,Long> {
-    @Query(value = "SELECT * FROM experiencia_laboral ORDER BY fechainicio ASC", nativeQuery = true)
+    @Query(value = "SELECT * FROM experiencia_laboral ORDER BY fechainicio DESC", nativeQuery = true)
    List<Experiencia_laboral> findBydate();
 }

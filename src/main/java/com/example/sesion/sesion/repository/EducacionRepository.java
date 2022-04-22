@@ -14,6 +14,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 @Configuration
 public interface EducacionRepository extends JpaRepository<Educacion,Long> {
-     @Query(value = "SELECT * FROM educacion ORDER BY anoinic ASC", nativeQuery = true)
+     @Query(value = "SELECT * FROM educacion ORDER BY anoinic DESC", nativeQuery = true)
    List<Educacion> findBydate();
 }
