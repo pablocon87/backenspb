@@ -24,6 +24,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -191,6 +192,33 @@ public String createUser(@RequestBody User usr){
             return usr;
             
               }		
+    @PutMapping("/user/editard/{id}")
+    public User editPersonad(@PathVariable Long id,
+            @RequestParam("user") String nuevoUser,
+            @RequestParam("password") String nuevoPassword,
+            @RequestParam("token") String nuevoToken,
+            @RequestParam("expired") Integer nuevoExpired,
+            @RequestParam("conec") Integer nuevoConec,
+            @RequestParam ("auten") Integer nuevoAuten,
+            @RequestParam("timelim") String nuevoTimelim,
+            @RequestParam("rol") Integer nuevoRol
+            ){
+        
+                    
+            User usr = interUser.findUser(id);
+            usr.setUser(usr.getUser());
+            usr.setPassword(getMD5(nuevoPassword));
+            usr.setToken(nuevoToken);
+            usr.setExpired(nuevoExpired);
+            usr.setConec(nuevoConec);
+            usr.setAuten(nuevoAuten);
+            usr.setTimelim(nuevoTimelim);
+            usr.setRol(nuevoRol);
+            interUser.saveUser(usr);
+            
+            return usr;
+            
+              }		
     @PutMapping("/user/traer/{user}")
     public User getUsers(@PathVariable String user){
         
@@ -199,6 +227,11 @@ public String createUser(@RequestBody User usr){
             usr.setPassword(usr.getPassword());
             usr.setRol(usr.getRol());
         return usr;
+    }
+     @DeleteMapping("/user/borrar/{id}")
+    public String deleteUser (@PathVariable Long id){
+        interUser.deleteUser(id);
+        return "Succes";
     }
 	
  public static String getMD5(String input) {
