@@ -58,8 +58,13 @@ public User login(@RequestParam("user") String username, @RequestParam("password
       if(objPersona.getUser().equals(username) && objPersona.getPassword().equals(getMD5(pwd))){
           if(objPersona.getConec()==0){  
                 System.out.println("este es user "+ username + " y este es pass " + pwd);
-          objPersona.setConec(1);
+         
           objPersona.setTimelim("0");
+          if(objPersona.getUser().equals("invitado")){
+              objPersona.setConec(0);
+          }else{
+               objPersona.setConec(1);
+          }
           objPersona.setAuten(1);
             interUser.saveUser(objPersona);
              String token = getJWTToken(username);
