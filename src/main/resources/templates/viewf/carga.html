@@ -57,15 +57,427 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     /* document.addEventListener("keypress",e=>{
         console.log(` ${e.code}`); 
      });*/
-   
+  /* window.addEventListener('keydown',e=>{
+         console.log(e.keyCode)//27;
+       
+   });*/
   window.addEventListener("mouseover", event => {
    // window.addEventListener("dblclick", event => {
     //    if(document.getElementById("id1")!==null){
     //document.getElementById("id1").addEventListener("click",event=>{ 
         //console.log("toquea");
-    
+
    // } );}
    let ahu=0;
+   if (document.getElementById("idedu1")!==null){
+       
+         for(let i=1;i<=(document.getElementsByTagName("td").length+9);i++){
+              for(let b=1;b<=(document.getElementsByTagName("td").length+9);b++){
+                  
+                   if(document.getElementById("inpt"+i)!==null){  
+        document.getElementById("inpt"+i).addEventListener('keydown',e=>{
+            let cod = e.keyCode || e.switch;
+            if(cod===9){
+                downk(b,i);
+            }
+            if(cod===27){
+                                     let d,f,g,h,j,k,l,m,dd,ff,kk,ll,mm,ag,agga,divic;
+                 for (let a=1;a <= (document.getElementsByTagName("td").length+8);a++){
+                                  
+                                    if(document.getElementById("td"+b+"p"+a) !==null){
+                                      // console.log(document.getElementsByTagName("td")[a].innerHTML);
+                                     // for(let c=0;c<document.getElementsByTagName("td").length;c++){
+                                      
+                                         
+                                         id =document.getElementById("th2"+b).innerHTML;
+                                        //console.log("ID"+id);
+                                        if(a===i){
+                                            localStorage.setItem("lap",b);
+                                            localStorage.setItem("lali",i);
+                                            console.log("di enter" +i);
+                                         let multi=parseInt(localStorage.getItem("lap"))*10;
+                                   d=b;
+                                  f=multi-8;
+                                  d=b;
+                                  
+                                  g=d+1;
+                                  h=g+1;
+                                  j=h+1;
+                                  k=f+1;
+                                  l=k+1;
+                                  m=l+1;
+                                  dd=m+1;
+                                  ff=dd+1;
+                                  kk=ff+1;
+                                  ll=kk+1;
+                                  mm=ll+1;
+                                 
+                                // console.log(document.getElementById("inpt"+i).value);
+                                
+                                
+                                 if(document.getElementById("inpt"+i)!==null){
+                                     document.getElementById("td"+d+"p"+i).innerHTML= document.getElementById("inpt"+i).value;
+                                      while(document.getElementsByTagName("input").lenght){
+                                        document.getElementsByTagName("input")[0].parentNode.removeChild(document.getElementsByTagName("input")[0]);
+                                    }
+                                 
+                                 }
+                                return;
+                               
+                               
+                                        } 
+                                   }
+                                }
+            }
+            //console.log(e.keyCode);
+            if(e.key==='Enter'){
+                // console.log("di enter" +i);
+                // console.log(document.getElementsByTagName("td").length+8);
+                                      let d,f,g,h,j,k,l,m,dd,ff,kk,ll,mm,ag,agga,divic;
+                 for (let a=1;a <= (document.getElementsByTagName("td").length+8);a++){
+                                  
+                                    if(document.getElementById("td"+b+"p"+a) !==null){
+                                      // console.log(document.getElementsByTagName("td")[a].innerHTML);
+                                     // for(let c=0;c<document.getElementsByTagName("td").length;c++){
+                                      
+                                         
+                                         id =document.getElementById("th2"+b).innerHTML;
+                                        //console.log("ID"+id);
+                                        if(a===i){
+                                            localStorage.setItem("lap",b);
+                                            localStorage.setItem("lali",i);
+                                            console.log("di enter" +i);
+                                         let multi=parseInt(localStorage.getItem("lap"))*10;
+                                   d=b;
+                                  f=multi-8;
+                                  d=b;
+                                  
+                                  g=d+1;
+                                  h=g+1;
+                                  j=h+1;
+                                  k=f+1;
+                                  l=k+1;
+                                  m=l+1;
+                                  dd=m+1;
+                                  ff=dd+1;
+                                  kk=ff+1;
+                                  ll=kk+1;
+                                  mm=ll+1;
+                                 
+                                // console.log(document.getElementById("inpt"+i).value);
+                                
+                                if(localStorage.getItem("agregar")===null){
+                                    if(document.getElementById("inpt"+i)!==null){
+                                     document.getElementById("td"+d+"p"+i).innerHTML= document.getElementById("inpt"+i).value;
+                                      while(document.getElementsByTagName("input").lenght){
+                                        document.getElementsByTagName("input")[0].parentNode.removeChild(document.getElementsByTagName("input")[0]);
+                                    }
+                                  EditEdu(d,f,k,l,m,dd,ff,kk,ll,mm);
+                                 }
+                                return;
+                                }
+                                 if(document.getElementById("inpt"+i)!==null){
+                                     document.getElementById("td"+d+"p"+i).innerHTML= document.getElementById("inpt"+i).value;
+                                      while(document.getElementsByTagName("input").lenght){
+                                        document.getElementsByTagName("input")[0].parentNode.removeChild(document.getElementsByTagName("input")[0]);
+                                    }
+                                  EditEdu(d,f,k,l,m,dd,ff,kk,ll,mm);
+                                 }
+                                return;
+                               
+                                   return;
+                                        } 
+                                   }
+                                }
+                
+            }    
+            
+        });
+         
+            }    
+           
+       
+    
+        
+                   if(document.getElementById("th"+b+""+i) !==null){
+                
+               document.getElementById("th"+b+""+i).addEventListener("mousemove",event=>{
+                   elm +=1;
+                   if(document.getElementById("th"+b+""+i).innerHTML==="id"){
+                       return;
+                   }
+                   if(document.getElementById("thh"+b+""+i)!==null){
+                   localStorage.setItem("tdp",document.getElementById("thh"+b+""+i).innerHTML);
+                    }
+                   let divi=document.getElementsByTagName("td").length/9;
+                 
+                   if (i===divi){
+                       if(document.getElementById("add")!==null){
+                           document.getElementById("add").remove();
+                       }
+                        const faicon= document.createElement("i");
+                        faicon.setAttribute("class","fa-solid fa-plus");
+                        faicon.setAttribute("id","add");
+                        faicon.setAttribute("onclick","clickmeEdu("+b+","+i+")")
+                        faicon.setAttribute("title","Agregar");
+                        faicon.setAttribute("type","button");
+                         
+                        faicon.setAttribute("style","color:greenyellow;opacity: 0.9");
+                   document.getElementById("th"+b+""+i).appendChild(faicon);
+                         
+                   }
+                   if(elm<=1){
+                       
+                      if(document.getElementById("elim")!==null){
+                   
+                   document.getElementById("elim").remove();
+                    
+                        }
+                        if(document.getElementById("add")!==null){
+                            document.getElementById("add").remove();
+                        }
+                      
+                   const faicon= document.createElement("i");
+                   faicon.setAttribute("class","fa-solid fa-trash-can");
+                   faicon.setAttribute("id","elim");
+                   faicon.setAttribute("title","Eliminar");
+                   faicon.setAttribute("type","button");
+                    
+                   faicon.setAttribute("style","color:red;opacity: 0.9");
+                   document.getElementById("th"+b+""+i).appendChild(faicon);
+                   
+                      
+                    }
+                    
+                
+               });elm=0 ;
+               let cu=0;
+               
+               if(document.getElementById("elim")!==null){
+                document.getElementById("elim").addEventListener("click",event=>{
+                        console.log("ahuaaaa"+b +" "+i);
+                       Swal.fire({
+                                title: '¿Seguro de que desea eliminar el Registro?',
+                                showDenyButton: true,
+                                showCancelButton: true,
+                                confirmButtonText: 'Si Eliminar',
+                                denyButtonText: `No`,
+                              }).then((result) => {
+                                /* Read more about isConfirmed, isDenied below */
+                                if (result.isConfirmed) {
+                                   // console.log("THID"+document.getElementById("th"+b+""+i).innerHTML);
+                                   if(document.getElementById("thh"+b+""+i) ===null){
+                                       return;
+                                   }
+                                    let limpiar=localStorage.getItem("tdp");    //document.getElementById("thh"+b+""+i).innerHTML;
+                                    
+                                    console.log("LIMPIAR"+limpiar);
+                                    
+                                      fetch('/educacion/borrar/'+limpiar, {
+                                                          method: 'DELETE',
+                                                            headers: (
+                                                          {
+                                                            'Content-Type': 'application/json',
+                                                            'Authorization': localStorage.getItem('au_token')
+                                                          }
+                                                         )
+                                                         
+                                                         // body:{title: 'Angular POST Request Example'}
+                                                         // body: JSON.stringify({id: document.getElementById("th"+b+""+i).innerHTML})
+                                                              })
+                                                             .then(res => res)
+                                                             .then(res=> { console.log(res);
+                                                                if(res.status ===200){
+                                                                    console.log("200");
+                                                                     EducReload();
+                                                                    Swal.fire('Eliminado!', '', 'success')
+                                                                }
+                                                               
+                                                                 //alert("se borro correctamente");
+                                                             });
+                                  
+                                } else if (result.isDenied) {
+                                  Swal.fire('No se Eliminara', '', 'info')
+                                }
+                              }); 
+                    });}
+               
+                
+               
+               
+                        }
+                  if (document.getElementById("td"+b+"p"+i)!==null)  {
+                      
+                      document.getElementById("td"+b+"p"+i).addEventListener("dblclick", e=>{
+                          
+                       if(Object.values(document.getElementById("td"+b+"p"+i).innerHTML.toString())[0] !== '<'){
+                         pepe=document.getElementById("td"+b+"p"+i).innerHTML.toString();
+                        }
+                        document.getElementById("td"+b+"p"+i).innerHTML="";
+                         //if(localStorage.getItem("td"))
+                          
+                       let inpt= document.createElement("input");
+                       
+                        
+                       inpt.setAttribute("id","inpt"+i);
+                       inpt.setAttribute("type","text");
+                       inpt.setAttribute("value",localStorage.getItem("td"));
+                        
+                       inpt.value=pepe;
+                     
+                       //document.getElementById("tr21").appendChild(inpt);
+                       document.getElementById("td"+b+"p"+i).appendChild(inpt);
+                       
+                       inpt.addEventListener("keypress",function (e) {
+                           if(e.key==="Enter"){
+                               
+                               if(localStorage.getItem("agregar")!==null){
+                                   
+                                   
+                                     let d,f,g,h,j,k,l,m,dd,ff,kk,ll,mm,ag,agga,divic;
+                 for (let a=1;a <= (document.getElementsByTagName("td").length+7);a++){
+                                  
+                                    if(document.getElementById("td"+b+"p"+a) !==null){
+                                      // console.log(document.getElementsByTagName("td")[a].innerHTML);
+                                     // for(let c=0;c<document.getElementsByTagName("td").length;c++){
+                                      
+                                         
+                                         id =document.getElementById("th2"+b).innerHTML;
+                                        //console.log("ID"+id);
+                                        if(a===i){
+                                            localStorage.setItem("lap",b);
+                                            localStorage.setItem("lali",i);
+                                            
+                                        varia=document.getElementById("td"+b+"p"+a).innerHTML;
+                                        }
+                                       
+                                         
+                                    
+                                   }
+                                }
+                let multi=parseInt(localStorage.getItem("lap"))*10;
+                                   d=b;
+                                  f=multi-8;
+                                  d=b;
+                                  
+                                  g=d+1;
+                                  h=g+1;
+                                  j=h+1;
+                                  k=f+1;
+                                  l=k+1;
+                                  m=l+1;
+                                  dd=m+1;
+                                  ff=dd+1;
+                                  kk=ff+1;
+                                  ll=kk+1;
+                                  mm=ll+1;
+                                   console.log("D"+d);
+                                 console.log("F"+f);
+                                 console.log("K"+k);
+                                 console.log("L"+l);
+                                 console.log("M"+m);
+                                 console.log("DD"+dd);
+                                 console.log("ff"+ff);
+                                 console.log("kk"+kk);
+                                 console.log("ll"+ll);
+                                 console.log("mm"+mm);
+                                
+                                  if(document.getElementById("inpt"+i)!==null){
+                                     document.getElementById("td"+d+"p"+i).innerHTML= document.getElementById("inpt"+i).value;
+                                      while(document.getElementsByTagName("input").lenght){
+                                        document.getElementsByTagName("input")[0].parentNode.removeChild(document.getElementsByTagName("input")[0]);
+                                    }
+                                  EditEdu(d,f,k,l,m,dd,ff,kk,ll,mm);
+                                 }
+                                   return;
+                                   
+                               }
+                                document.getElementById("td"+b+"p"+i).innerHTML=document.getElementById("inpt"+i).value;
+                                    if(document.getElementById("inpt"+i)!==null){
+                                       document.getElementById("inpt"+i).remove();
+                                   }
+                       let d,f,g,h,j,k,l,m,dd,ff,kk,ll,mm,ag,agga,divic;
+                       divic=(document.getElementsByTagName("td").length+5);
+                       //console.log("DDD"+divic);
+                            ag=b+4;
+                            agga=i+4;
+                                           
+                                                                   
+                                  
+                                 
+                                 for (let a=1;a <= (document.getElementsByTagName("td").length+7);a++){
+                                  
+                                    if(document.getElementById("td"+b+"p"+a) !==null){
+                                      // console.log(document.getElementsByTagName("td")[a].innerHTML);
+                                     // for(let c=0;c<document.getElementsByTagName("td").length;c++){
+                                      
+                                         
+                                         id =document.getElementById("th2"+b).innerHTML;
+                                        //console.log("ID"+id);
+                                        if(a===i){
+                                            localStorage.setItem("lap",b);
+                                            localStorage.setItem("lali",i);
+                                            
+                                        varia=document.getElementById("td"+b+"p"+a).innerHTML;
+                                        }
+                                       
+                                         
+                                    
+                                   }
+                                }
+                                  let multi=parseInt(localStorage.getItem("lap"))*10;
+                                   d=b;
+                                  f=multi-8;
+                                  d=b;
+                                  
+                                  g=d+1;
+                                  h=g+1;
+                                  j=h+1;
+                                  k=f+1;
+                                  l=k+1;
+                                  m=l+1;
+                                  dd=m+1;
+                                  ff=dd+1;
+                                  kk=ff+1;
+                                  ll=kk+1;
+                                  mm=ll+1;
+                                   console.log("D"+d);
+                                 console.log("F"+f);
+                                 console.log("K"+k);
+                                 console.log("L"+l);
+                                 console.log("M"+m);
+                                 console.log("DD"+dd);
+                                 console.log("ff"+ff);
+                                 console.log("kk"+kk);
+                                 console.log("ll"+ll);
+                                 console.log("mm"+mm);
+                                
+                                  if(document.getElementById("inpt"+i)!==null){
+                                     document.getElementById("td"+d+"p"+i).innerHTML= document.getElementById("inpt"+i).value;
+                                     console.log("AVERT "+document.getElementById("td"+d+"p"+i).innerHTML) 
+                                     return;
+                                    while(document.getElementsByTagName("input").lenght){
+                                        document.getElementsByTagName("input")[0].parentNode.removeChild(document.getElementsByTagName("input")[0]);
+                                    }
+                                  EditEdu(d,f,k,l,m,dd,ff,kk,ll,mm);
+                                  return;
+                                 }
+                                
+                   
+                   
+                    
+                           }
+                           
+                       });
+                    
+                    
+                    });
+                      
+                  }
+                   
+              }
+         }
+   }
  if (document.getElementById("idcon1")!==null){
      lenghu=parseInt(localStorage.getItem("posicion"));
      
@@ -78,6 +490,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                document.getElementById("th"+b+""+i).addEventListener("mousemove",event=>{
                    elm +=1;
                    //console.log("B"+b);
+                    if(document.getElementById("th"+b+""+i).innerHTML==="id"){
+                       return;
+                   }
+                   if(document.getElementById("thh"+b+""+i)!==null){
+                   localStorage.setItem("tdp",document.getElementById("thh"+b+""+i).innerHTML);
+                    }
                    let divi=document.getElementsByTagName("td").length/4;
                   // console.log("DIVI"+document.getElementsByTagName("td").length+i);
                    if (i===divi){
@@ -127,7 +545,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                
                if(document.getElementById("elim")!==null){
                 document.getElementById("elim").addEventListener("click",event=>{
-                        console.log("ahuaaaa");
+                     
                        Swal.fire({
                                 title: '¿Seguro de que desea eliminar el Registro?',
                                 showDenyButton: true,
@@ -141,7 +559,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                    if(document.getElementById("thh"+b+""+i) ===null){
                                        return;
                                    }
-                                    let limpiar=document.getElementById("thh"+b+""+i).innerHTML;
+                                    let limpiar=localStorage.getItem("tdp");
                                     
                                     //console.log("LIMPIAR"+limpiar);
                                     //return;
@@ -204,9 +622,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                        inpt.addEventListener("keypress",function (e) {
                            if(e.key==="Enter"){
                                 document.getElementById("td"+b+"p"+i).innerHTML=document.getElementById("inpt"+i).value;
-                                    if(document.getElementById("inpt"+i)!==null){
+                                 /*   if(document.getElementById("inpt"+i)!==null){
                                        document.getElementById("inpt"+i).remove();
-                                   }
+                                   }*/
                        let edi,sobre,de,saber,personaid,d,f,g,h,j,k,l,m,ag,agga,divic;
                        divic=(document.getElementsByTagName("td").length+5);
                        //console.log("DDD"+divic);
@@ -305,7 +723,55 @@ if(document.getElementById("idexp1")!==null){
             if(cod===9){
                 downk(b,i);
             }
-                
+            if(cod===27){
+                                     let d,f,g,h,j,k,l,m,dd,ff,kk,ll,mm,ag,agga,divic;
+                 for (let a=1;a <= (document.getElementsByTagName("td").length+8);a++){
+                                  
+                                    if(document.getElementById("td"+b+"p"+a) !==null){
+                                      // console.log(document.getElementsByTagName("td")[a].innerHTML);
+                                     // for(let c=0;c<document.getElementsByTagName("td").length;c++){
+                                      
+                                         
+                                         id =document.getElementById("th2"+b).innerHTML;
+                                        //console.log("ID"+id);
+                                        if(a===i){
+                                            localStorage.setItem("lap",b);
+                                            localStorage.setItem("lali",i);
+                                            console.log("di enter" +i);
+                                         let multi=parseInt(localStorage.getItem("lap"))*8;
+                                   d=b;
+                                  f=multi-7;
+                                  d=b;
+                                  
+                                  g=d+1;
+                                  h=g+1;
+                                  j=h+1;
+                                  k=f+1;
+                                  l=k+1;
+                                  m=l+1;
+                                  dd=m+1;
+                                  ff=dd+1;
+                                  kk=ff+1;
+                                  ll=kk+1;
+                                  mm=ll+1;
+                                 
+                                // console.log(document.getElementById("inpt"+i).value);
+                                
+                                
+                                 if(document.getElementById("inpt"+i)!==null){
+                                     document.getElementById("td"+d+"p"+i).innerHTML= document.getElementById("inpt"+i).value;
+                                      while(document.getElementsByTagName("input").lenght){
+                                        document.getElementsByTagName("input")[0].parentNode.removeChild(document.getElementsByTagName("input")[0]);
+                                    }
+                                 
+                                 }
+                                return;
+                               
+                               
+                                        } 
+                                   }
+                                }
+            }    
             
         });
           document.getElementById("inpt"+i).addEventListener('keypress',e=>{
@@ -362,8 +828,13 @@ if(document.getElementById("idexp1")!==null){
                 
                document.getElementById("th"+b+""+i).addEventListener("mousemove",event=>{
                    elm +=1;
-                   
-                   let divi=document.getElementsByTagName("td").length/7;
+                   if(document.getElementById("th"+b+""+i).innerHTML==="id"){
+                    return;
+                }
+                   if(document.getElementById("thh"+b+""+i)!==null){
+                    localStorage.setItem("tdp",document.getElementById("thh"+b+""+i).innerHTML);
+                    }
+                    let divi=document.getElementsByTagName("td").length/7;
                   // console.log("DIVI"+document.getElementsByTagName("td").length+i);
                    if (i===divi){
                        if(document.getElementById("add")!==null){
@@ -412,7 +883,7 @@ if(document.getElementById("idexp1")!==null){
                
                if(document.getElementById("elim")!==null){
                 document.getElementById("elim").addEventListener("click",event=>{
-                        console.log("ahuaaaa");
+                        
                        Swal.fire({
                                 title: '¿Seguro de que desea eliminar el Registro?',
                                 showDenyButton: true,
@@ -426,10 +897,8 @@ if(document.getElementById("idexp1")!==null){
                                    if(document.getElementById("thh"+b+""+i) ===null){
                                        return;
                                    }
-                                    let limpiar=document.getElementById("thh"+b+""+i).innerHTML;
-                                    
-                                    //console.log("LIMPIAR"+limpiar);
-                                    //return;
+                                    let limpiar=localStorage.getItem("tdp");
+                                  
                                       fetch('/experiencia/borrar/'+limpiar, {
                                                           method: 'DELETE',
                                                             headers: (
@@ -690,7 +1159,7 @@ if(document.getElementById("idexp1")!==null){
                                      // for(let c=0;c<document.getElementsByTagName("td").length;c++){
                                       
                                          
-                                         id =document.getElementById("th2"+b).innerHTML;
+                                         id =document.getElementById("thh2"+b).innerHTML;
                                         //console.log("ID"+id);
                                         if(a===i){
                                             localStorage.setItem("lap",b);
@@ -1079,6 +1548,44 @@ if(document.getElementById("td1")!==null){
                             }
                            return;
  }
+ function clickmeEdu(b,i){
+       localStorage.setItem("agregar","1");
+                       console.log("clickme"+b +" "+i);//b2 i 4
+                      let tbd=(document.getElementsByTagName("td").length+9);
+                       let bb=b+1;
+                       let ii=i+1;
+                        if(document.getElementById("tbd"+tbd)!==null){
+                           document.getElementById("tbd"+tbd).remove();
+                       }
+                       const paratd = document.createElement("tbody");
+                       paratd.setAttribute("id","tbd"+tbd);
+                  document.getElementById("idedu1").appendChild(paratd);
+                  const para6 = document.createElement("tr");
+                     para6.setAttribute("id","tr"+b+""+ii);
+                  document.getElementById("tbd"+tbd).appendChild(para6);
+                   const para7 = document.createElement("th");
+                   para7.setAttribute("id","th"+b+""+ii);
+                     para7.setAttribute("scope","row");
+                     para7.innerHTML=i+1;
+                  document.getElementById("tr"+b+""+ii).appendChild(para7);
+                  let coni=parseInt(localStorage.getItem("con"))+1;
+                  for(let y=1;y<=9;y++){
+                     
+                      let im=coni+y;
+                       const para8 = document.createElement("td");
+                       para8.setAttribute("id","td"+ii+"p"+im);
+                       para8.innerHTML="Agregar";
+                        document.getElementById("tr"+b+""+ii).appendChild(para8);
+                        /*const inptu=document.createElement("input");
+                        inptu.setAttribute("type","text");
+                        inptu.setAttribute("id","inpt"+y);
+                        if(y===7){
+                            inptu.setAttribute("title","Presione Enter para Agregar");
+                        }
+                        inptu.value="Agregar";
+                        document.getElementById("td"+ii+"p"+im).appendChild(inptu);*/
+                    }
+ }
  function clickmeCn(b,i){
      let len=0;
      let edi,sobre,de,saber,personaid,d,f,g,h,j,k,l,m,ag,agga;
@@ -1200,7 +1707,7 @@ if(document.getElementById("td1")!==null){
                 
               </li>
               <li class="nav-item">
-                <a class="nav-link" onclick="Educacion();" href="#"><i class="fa-solid fa-eye"></i>Educacion</a>
+                  <a class="nav-link" onclick="EducReload();" href="#"><i class="fa-solid fa-eye"></i>Educacion</a>
                 
               </li>
               <li class="nav-item">
@@ -1745,7 +2252,149 @@ if(document.getElementById("td1")!==null){
                     });
      
  }
- 
+ function EducReload(){
+     borrar();
+     let mas=0;
+      let conta=0;
+     let con=0;
+      fetch('/educacion/traer', {
+        method: 'GET',
+          headers: (
+        {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Authorization': localStorage.getItem('au_token')
+        }
+       )
+        
+        /*body: JSON.stringify({ mail: 'ññññ', password: 'ññññ' })*/
+            })
+           .then(res => res.json())
+           .then(res=> {
+               
+                let rr=Object.values(res);
+           
+      
+        for(let r of rr){
+            
+            conta+=1;
+            //alert(JSON.stringify(r));
+             if(r === '[' ||  r === ']' ){
+                // alert("soy r "+r);
+                 
+             }else{
+                 mas+=1;
+                 if (conta<=1){
+                    const para = document.createElement("table");
+                    para.setAttribute("class","table table-dark table-striped");
+                     para.setAttribute("id","idedu"+conta);
+                  document.getElementById("contenido").appendChild(para);
+                  const para2 = document.createElement("thead");
+                     para2.setAttribute("id","thea"+conta);
+                  document.getElementById("idedu"+conta).appendChild(para2);
+                  const para3 = document.createElement("tr");
+                     para3.setAttribute("id","tr1"+conta);
+                  document.getElementById("thea"+conta).appendChild(para3);
+                  
+                  for(let i=0; i<=9;i++){
+                      const para4 = document.createElement("th");
+                  para4.setAttribute("scope","col");
+                     para4.setAttribute("id","th1"+conta);
+                     if(i===0){
+                     para4.innerHTML="id";
+                    }
+                    if(i===1){
+                     para4.innerHTML="Id Persona";
+                    }
+                    if(i===2){
+                     para4.innerHTML="Nivel";
+                    }
+                    if(i===3){
+                     para4.innerHTML="Establecimiento";
+                    }
+                    if(i===4){
+                     para4.innerHTML="URL Logo";
+                    }
+                    if(i===5){
+                     para4.innerHTML="Url lugar";
+                    }
+                    if(i===6){
+                     para4.innerHTML="Año inicio";
+                    }
+                    if(i===7){
+                     para4.innerHTML="Año fin";
+                    }
+                    if(i===8){
+                      para4.innerHTML="Titulo";
+                        
+                    }
+                    if(i===9){
+                        para4.innerHTML="Persona Id"
+                    }
+                    
+                  document.getElementById("tr1"+conta).appendChild(para4);
+                }
+                 }
+                const para5 = document.createElement("tbody");
+                     para5.setAttribute("id","tbd"+conta);
+                  document.getElementById("idedu"+1).appendChild(para5);
+                  const para6 = document.createElement("tr");
+                     para6.setAttribute("id","tr2"+conta);
+                  document.getElementById("tbd"+conta).appendChild(para6);
+                  const para7 = document.createElement("th");
+                     para7.setAttribute("scope","row");
+                     para7.setAttribute("id","th2"+conta);
+                     para7.innerHTML=r.id;
+                  document.getElementById("tr2"+conta).appendChild(para7);
+                  const putt=document.createElement("th");
+                    putt.setAttribute("scope","row");
+                     putt.setAttribute("id","thh2"+conta);
+                     putt.setAttribute("hidden","true");
+                     putt.innerHTML=r.id;
+                  document.getElementById("tr2"+conta).appendChild(putt);
+                let o=0;
+                    for(let i=0;i<Object.values(r).length;i++){
+                   
+                   
+                if(i>0){
+                    o=i;
+                    
+                  
+              }
+                  
+                  
+                }
+                localStorage.setItem("o",o);
+               
+                for(let i=0;i<Object.values(r).length;i++){
+                      con+=1;
+                      
+                       let resuu= document.getElementsByTagName("td").length/parseInt(localStorage.getItem("o"));
+                   if (mas===7){
+                       let lng=document.getElementsByTagName("td").length+1;
+                       localStorage.setItem("lengh",lng);
+                       mas=0;
+                   }
+                   
+                 if(i>0){
+                  const para8 = document.createElement("td");
+                  
+                      para8.setAttribute("id","td"+conta+"p"+con);
+                  localStorage.setItem("con",con);
+                                para8.innerHTML=Object.values(r)[i];
+                  document.getElementById("tr2"+conta).appendChild(para8);
+              }
+                }
+                    
+                    
+                                  
+                                }
+                         }
+               
+               
+               
+               
+           });
+ }
  function Educacion(){
      borrar();
     /* if(document.getElementsByTagName("br")!==null && document.getElementsByTagName("input")!==null){
@@ -1831,6 +2480,9 @@ if(document.getElementById("td1")!==null){
         
         
                   for(let i=1;i<15;i++){
+                      if(document.getElementById("idedu1")!==null){
+                          document.getElementById("idedu1").remove();
+                      }
                       if(document.getElementById("idcon1")!==null){
                           document.getElementById("idcon1").remove();
                       }
@@ -2260,6 +2912,89 @@ if(document.getElementById("td1")!==null){
     
      
  }
+   function EditEdu(d,f,k,l,m,dd,ff,kk,ll,mm){
+      if(localStorage.getItem("agregar")==='1'){
+          let id=0;   
+     // let edis=document.getElementById("th2"+d).innerHTML;   
+    let id_persona=document.getElementById("td"+d+"p"+f).innerHTML;
+    let principal=document.getElementById("td"+d+"p"+k).innerHTML;
+    let segunda=document.getElementById("td"+d+"p"+l).innerHTML;
+    let url_logo=document.getElementById("td"+d+"p"+m).innerHTML;
+    let urlinst=document.getElementById("td"+d+"p"+dd).innerHTML;
+    let anoinic=document.getElementById("td"+d+"p"+ff).innerHTML;
+    let anofin=document.getElementById("td"+d+"p"+kk).innerHTML;
+    let titulo=document.getElementById("td"+d+"p"+ll).innerHTML;
+   
+     let persona_id=document.getElementById("td"+d+"p"+mm).innerHTML;
+   
+    
+     let addjs={id,id_persona,principal,segunda,url_logo,urlinst,anoinic,anofin,titulo,persona_id};
+    console.log(JSON.stringify(addjs)); 
+    
+        fetch('/educacion/crear/', {
+                                                          method: 'POST',
+                                                            headers: (
+                                                          {
+                                                            'Content-Type': 'application/json',
+                                                            'Authorization': localStorage.getItem('au_token')
+                                                          }
+                                                         ),
+                                                         
+                                                         // body:{title: 'Angular POST Request Example'}
+                                                          body: JSON.stringify(addjs)
+                                                              })
+                                                             .then(res => res)
+                                                             .then(res=> { console.log(res);
+                                                               if(res.status ===200){
+                                                                   localStorage.removeItem("agregar");
+                                                                    console.log("200");
+                                                                    EducReload();
+                                                                    Swal.fire('Agregado!', '', 'success')
+                                                                }
+                                                                
+                                                                // alert("se Agrego correctamente");
+                                                             });
+        return;
+     
+      }
+      let edis=document.getElementById("thh2"+d).innerHTML;   
+    let idPersonas=document.getElementById("td"+d+"p"+f).innerHTML;
+    let principal=document.getElementById("td"+d+"p"+k).innerHTML;
+    let segunda=document.getElementById("td"+d+"p"+l).innerHTML;
+    let urllogo=document.getElementById("td"+d+"p"+m).innerHTML;
+    let urlinst=document.getElementById("td"+d+"p"+dd).innerHTML;
+    let anoinic=document.getElementById("td"+d+"p"+ff).innerHTML;
+    let anofin=document.getElementById("td"+d+"p"+kk).innerHTML;
+    let titulo=document.getElementById("td"+d+"p"+ll).innerHTML;
+     let idpersona=document.getElementById("td"+d+"p"+mm).innerHTML;
+     console.log("edis "+edis+" "+idPersonas+" "+ principal+" "+segunda+" "+urllogo+" "+urlinst+" "+anoinic+" "+anofin+" "+titulo+" "+ idpersona);
+     
+ fetch('/educacion/editar/'+edis+'?principal='+principal
+    +'&segunda='+segunda
+    +'&personaid='+idPersonas
+    +'&urllogo='+urllogo
+    +'&urlinst='+urlinst
+    +'&anoinic='+anoinic
+    +'&anofin='+anofin
+    +'&titulo='+titulo
+    +'&persona_id='+idpersona, {
+        method: 'PUT',
+          headers: (
+        {
+          'Content-Type': 'application/json',
+          'Authorization': localStorage.getItem('au_token')
+        }
+       ),
+        body:{title: 'Angular PUT Request Example'}
+        /*body: JSON.stringify({ mail: 'ññññ', password: 'ññññ' })*/
+            })
+           .then(res => res.json())
+           .then(res=> {
+                
+              console.log(res);
+               
+             });
+ }
   function Edit2(d,f,k,l,m){
       if(localStorage.getItem("agregar")==='1'){
           let id=0;   
@@ -2295,7 +3030,7 @@ if(document.getElementById("td1")!==null){
         return;
      
       }
-      let edis=document.getElementById("th2"+d).innerHTML;   
+      let edis=document.getElementById("thh2"+d).innerHTML;   
      let personaids = document.getElementById("td"+d+"p"+m).innerHTML;
      let sobres= document.getElementById("td"+d+"p"+f).innerHTML;
      let des=document.getElementById("td"+d+"p"+k).innerHTML;
@@ -2317,8 +3052,9 @@ if(document.getElementById("td1")!==null){
                      window.location.assign("/")
                      return;
                  }
+                 
               console.log(res);
-               
+               ConocReload();
              });
  }
  function Edit(edi,sobre,de,saber,personaid){
